@@ -1,4 +1,4 @@
-THOT | That HTML Obvious Turntable | A dual deck audio player with crossfader and 2*7 bands Equalizer
+<img width="100%" src="capture.jpeg"></img>
 
 /*** 
  * THOT | That HTML Obvious Turntable
