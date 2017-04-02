@@ -1,21 +1,7 @@
-<!DOCTYPE html>
-<head>
-    
-  <meta charset="UTF-8">
-  
-<<<<<<< HEAD
-  <title>THOT | This HTML Orgasmic Turntable</title>
+<img width="100%" src="capture.jpeg"></img>
 
-<!-- 
-/*** 
- * THOT | This HTML Orgasmic Turntable
-=======
-  <title>THOT | That HTML Obvious Turntable</title>
-
-<!-- 
 /*** 
  * THOT | That HTML Obvious Turntable
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
  * Dual deck audio player with crossfader and dual 7 bands Equalizer
  * Find songs in many local folders to organize a random playlist
  * Full keyboard controls
@@ -63,16 +49,4 @@
  * showEq("on")
  * 
  * 
- * */-->
-
-<link rel="stylesheet" href="css/style.css">
-
-</head>
-
-<body>
-       <div class="main"> <!-- This <div> is the main target --> 
-
-    <script src="js/index.js"></script>
-
-</body>
- </html>
+ * *

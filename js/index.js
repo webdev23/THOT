@@ -2,7 +2,11 @@
 //~ console.log = function() {}
 
 /*** 
+<<<<<<< HEAD
  * THOT | This HTML Orgasmic Turntable
+=======
+ * THOT | That HTML Obvious Turntable
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
  * Dual deck audio player with crossfader and dual 7 bands Equalizer
  * Find songs in many local folders to organize a random playlist
  * Full keyboard controls
@@ -191,7 +195,11 @@ mixer.innerHTML = `
 <!-- Slider -->
 <form class="slider" id="sliderForm">
  <input type="range" id="sliderTracks" name="slidertracks" 
+<<<<<<< HEAD
    oninput="fadeTracks()" onclick="clearAutomation()" value="50" step="1" min="1" max="99" />
+=======
+   oninput="fadeTracks()" value="50" step="1" min="1" max="99" />
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
  <input type="range" id="sliderTracksRatio" 
   value="5" step="5" min="5" max="400" />
 </form>
@@ -217,9 +225,15 @@ onclick="if(this.value=='off'){this.value='on'}else{this.value='off'};showEq(thi
 <ul id="listing" oninput="pwnColor()"></ul>
 <ul id="listingB" oninput="pwnColor()"></ul>
 
+<<<<<<< HEAD
 <form onchange="localStorage.setItem('baseColor', color.value)">
     <input type="color" type="text" name="color" value="#FFFFFF" id="pwnClr" 
     oninput="pwnColor()" />
+=======
+<form>
+    <input type="color" type="text" value="#FFFFFF" id="pwnClr" 
+    oninput="pwnColor();sessionStorage.setItem('baseColor', this.value)" />
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
 </form>
  </div>
 <div class="poster" id="posterblock" onmouseleave="posterPause('off')">
@@ -249,7 +263,11 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=966247
     title="Deck B playback Rate | Right click to reset">
 </form>
 
+<<<<<<< HEAD
 <span class="bonjour" title="Toggle fullscreen">
+=======
+<span class="bonjour">
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     <b>𝄞</b>
 </span>
 
@@ -791,9 +809,13 @@ document.querySelectorAll(".drag").forEach(function(element) {
             
             setTimeout(function(){ 
                 posterAnim((max*105)-window.innerWidth)
+<<<<<<< HEAD
                 
                 // Block poster animation when inputs to avoid UI lags
                 document.querySelectorAll('input').forEach(function(elem) {
+=======
+                document.querySelectorAll('input[type="range"]').forEach(function(elem) {
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
                   elem.setAttribute("onmouseover","posterPause('on')")
                   elem.setAttribute("onmouseleave","posterPause('off')")
                 })
@@ -843,7 +865,12 @@ function returnOpposite(colour) {
 }
 
 function pwnColor() {
+<<<<<<< HEAD
     document.body.parentElement.style.backgroundColor = document.getElementById('pwnClr').value
+=======
+    document.body.parentElement.style.backgroundColor =
+     document.getElementById('pwnClr').value
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     document.body.style.color = 
     "#"+returnOpposite(document.getElementById('pwnClr').value.slice(1))
     document.querySelectorAll('a:not(.mark)').forEach(function(elem) {
@@ -859,8 +886,12 @@ if (!!window.chrome && !!window.chrome.webstore){
     document.body.setAttribute("onresize","fixScroll()")
     document.getElementsByClassName("mixer")[0].style.margin = "380px 0px 0px 0px"
     document.getElementsByClassName("bonjour")[0].style.margin = "0 0 0 -60px"
+<<<<<<< HEAD
     document.getElementsByClassName("left")[0].style.margin = "1% 0 0 -2%"
     document.getElementsByClassName("mixRight")[0].style.padding = ".9% 0 0 1%"
+=======
+    document.getElementsByClassName("mixRight")[0].style.margin = ".9% 0 0 10%"
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     document.getElementById("rateControls").style.display = "block"
 }
 
@@ -875,23 +906,37 @@ function showEq(showmebabe){
         inj = document.createElement('style');
         inj.innerHTML += 
             ".mixRight { opacity:0 }.left { opacity:0 } \
+<<<<<<< HEAD
             #listing { top:16.5%;max-height:64%;max-width:36%;margin:1% auto} \
             #listingB { top:16.5%;max-height:64%;max-width:36%;left:57%;margin: 0 0 0 -20px} \
+=======
+            #listing { top:130px;max-height:64%;max-width:36% } \
+            #listingB { top:130px;max-height:64%;max-width:36%;left:57% } \
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
             .files {position:block;width:100%;max-width:100%} \
             #audB{top:12%}\#aud{position:fixed\;top:12%\;left:0px} \
             .bonjour {display:none}#trackA {display:none } \
             #trackB {display:none }input[type='file'] {transform:rotate(0deg)"
         document.body.appendChild(inj);
     }
+<<<<<<< HEAD
     if (showmebabe == "on"){
+=======
+    if (yala == "on"){
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
         // Bitch
         inj = document.createElement('style');
         inj.innerHTML += "\
             .mixRight {opacity:1  } \
             .left { opacity:1 } \
             #listing {top: unset;max-height: 49%;max-width: 44% } \
+<<<<<<< HEAD
             #listing { top:330px;max-height:49%;max-width:44%;left:6%;margin:0 0 0 -20px} \
             #listingB { top:330px;max-height:44%;max-width:44%;left:56%;margin:0 0 0 -20px} \
+=======
+            #listing { top:330px;max-height:49%;max-width:44%;left:6%} \
+            #listingB { top:330px;max-height:44%;max-width:44%;left:56%} \
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
             .files { position:fixed;width:102%;max-width:100%} \
             #audB{ position:block;top:50%;left:unset} \
             #aud{ position:block;top:50%;left:unset} \
@@ -1062,6 +1107,7 @@ function resetAll() {
   highGainKnob.value = "50"
 }
 
+<<<<<<< HEAD
 // Clear all automation
 function clearAutomation(){
     var t = window.setTimeout(null,0);
@@ -1069,6 +1115,8 @@ function clearAutomation(){
     console.log("Automations canceled")
 }
 
+=======
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
 // drag drop
 window.allowDrop = function(ev) {
     ev.preventDefault();
@@ -1193,6 +1241,7 @@ onkeyup = function(e){
 // Nice color from the user html input on load
 //~ pwnColor()
 
+<<<<<<< HEAD
 // The page is ready, let's prepare some more stuffs
 onload = (function(){
     // Call back the page color set by user
@@ -1203,13 +1252,26 @@ onload = (function(){
     document.getElementsByClassName("bonjour")[0].setAttribute("onclick","if(this.dataset.fullscreen =='off'){this.dataset.fullscreen='on';fullScreen()}else{this.dataset.fullscreen='off';regularScreen()}")
     
     // Insert new favicon
+=======
+// The page is ready, let's do some more stuffs
+onload = (function(){
+    // Call back the page color set by user
+    pwnClr.value = sessionStorage.getItem('baseColor')
+    // Allow fullscreen by dualclick on the page body
+    document.body.setAttribute("data-fullscreen","off")
+    document.body.setAttribute("ondblclick","if(this.dataset.fullscreen =='off'){this.dataset.fullscreen='on';fullScreen()}else{this.dataset.fullscreen='off';regularScreen()}")
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     var link = document.querySelector("link[rel*='icon']")  || document.createElement('link');
         link.type = 'image/x-icon';
         link.rel = 'shortcut icon';
         link.href = 'favicon.png';
     document.getElementsByTagName('head')[0].appendChild(link)
+<<<<<<< HEAD
     
     // Calculate and display colors based on user needs
+=======
+    // Calculate and display user colors 
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     pwnColor()
 })()
 

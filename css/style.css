@@ -103,8 +103,13 @@ button:focus {
     position: fixed;
     top: 330px;
     left: 6%;
+<<<<<<< HEAD
     min-height: 38%;
     max-height: 44%;
+=======
+    min-height: 300px;
+    max-height: 42%;
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     max-width: 44%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -122,8 +127,13 @@ button:focus {
     width: 35%;
     max-width: 35%;
     display: inline-block;
+<<<<<<< HEAD
     min-height: 38%;
     max-height: 44%;
+=======
+    min-height: 300px;
+    max-height: 42%;
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     max-width: 44%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -176,8 +186,13 @@ button:focus {
 }
 .mixRight {
     position: fixed;
+<<<<<<< HEAD
     left: 66%;
     margin: 0.8% -2% 0% 300px;
+=======
+    left: 82%;
+    margin: 0.8% 0 0 10%;
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     transition: opacity 0.2s
 }
 #mid {
@@ -207,7 +222,11 @@ hr {
     float: right;
 }
 .left {
+<<<<<<< HEAD
     margin: 1% 0 0 2.5%;
+=======
+    padding: 1% 0 0 1%;
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     position: fixed;
     left: 36%;
     transition: opacity 0.2s
@@ -330,8 +349,12 @@ hr {
     left: 51%;
     margin: 0;
     padding: 0 0px 0 20px;
+<<<<<<< HEAD
     text-align: center;
     cursor: pointer
+=======
+    text-align: center
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
 }
 .poster:hover {
     transform: translateX(-1000px)
@@ -489,6 +512,7 @@ input[type="file"] {
     }
     #listing {
         top: 130px;
+<<<<<<< HEAD
         max-height: 66%;
         min-height: 60%;
     }
@@ -496,6 +520,13 @@ input[type="file"] {
         top: 130px;
         max-height: 66%;
         min-height: 60%;
+=======
+        max-height: 36%
+    }
+    #listingB {
+        top: 130px;
+        max-height: 36%
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     }
     button {
         display: none
@@ -533,7 +564,11 @@ input[type="file"] {
         right: 20%;
     }
 }
+<<<<<<< HEAD
 @media all and (min-height: 50px) and (max-height: 720px) {
+=======
+@media all and (min-height: 50px) and (max-height: 560px) {
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     .mixRight {
         display: none
     }
@@ -543,12 +578,20 @@ input[type="file"] {
     #listing {
         top: 130px;
         max-height: 55%;
+<<<<<<< HEAD
         max-width: 48%
+=======
+        max-width: 36%
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     }
     #listingB {
         top: 130px;
         max-height: 55%;
+<<<<<<< HEAD
         max-width: 48%;
+=======
+        max-width: 36%;
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
         left: 57%
     }
     input[type="file"] {
@@ -581,7 +624,11 @@ input[type="file"] {
         display: none
     }
 }
+<<<<<<< HEAD
 @media all and (min-height: 10px) and (max-height: 500px) {
+=======
+@media all and (min-height: 10px) and (max-height: 250px) {
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     .slider {
         display: none
     }
@@ -593,6 +640,7 @@ input[type="file"] {
         margin: -140px 0 0 0
     }
     #listing {
+<<<<<<< HEAD
         top: 30%;
         left: 0.1%;
         width: 47.4%;
@@ -603,6 +651,15 @@ input[type="file"] {
         left: 50.5%;
         width: 47.8%;
         margin: 1% -1.8%
+=======
+        top: 70px;
+        left: -2.5%
+    }
+    #listingB {
+        top: 70px;
+        left: 49%;
+        width: 42%
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     }
     .poster {
         display: none

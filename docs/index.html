@@ -2,7 +2,11 @@
 
 <html>
 <head>
+<<<<<<< HEAD
   <title>index.js</title>
+=======
+  <title>THOT | That HTML Obvious Turntable | Docs</title>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -15,7 +19,11 @@
         
           <li id="title">
               <div class="annotation">
+<<<<<<< HEAD
                   <h1>index.js</h1>
+=======
+                  <h1>THOT | That HTML Obvious Turntable | Docs</h1>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
           </li>
         
@@ -34,11 +42,19 @@
             
             <div class="content"><div class='highlight'><pre>
 <span class="hljs-comment">/*** 
+<<<<<<< HEAD
  * THOT | This HTML Orgasmic Turntable
  * Dual deck audio player with crossfader and dual 7 bands Equalizer
  * Find songs in many local folders to organize a random playlist
  * Full keyboard controls
  ***
+=======
+ * P𝄞yer | Dual deck audio player | dual 7 bands Equalizer
+ * Full js | no library used but:
+ * - The web audio api
+ * - The file reader api
+ ****
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
  *  Nico KraZhtest | 2017 | ponyhacks.com
  ***
  * Keyboard events (Azerty):
@@ -65,6 +81,10 @@
  *--
  ***
  * Basic usage from js:
+<<<<<<< HEAD
+=======
+ * 
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
  * Check the current playlist tracks array
  * list
  * 
@@ -415,7 +435,11 @@ mixer.innerHTML = <span class="hljs-string">`
 &lt;!-- Slider --&gt;
 &lt;form class="slider" id="sliderForm"&gt;
  &lt;input type="range" id="sliderTracks" name="slidertracks" 
+<<<<<<< HEAD
    oninput="fadeTracks()" onclick="clearAutomation()" value="50" step="1" min="1" max="99" /&gt;
+=======
+   oninput="fadeTracks()" value="50" step="1" min="1" max="99" /&gt;
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
  &lt;input type="range" id="sliderTracksRatio" 
   value="5" step="5" min="5" max="400" /&gt;
 &lt;/form&gt;
@@ -441,9 +465,15 @@ onclick="if(this.value=='off'){this.value='on'}else{this.value='off'};showEq(thi
 &lt;ul id="listing" oninput="pwnColor()"&gt;&lt;/ul&gt;
 &lt;ul id="listingB" oninput="pwnColor()"&gt;&lt;/ul&gt;
 
+<<<<<<< HEAD
 &lt;form onchange="localStorage.setItem('baseColor', color.value)"&gt;
     &lt;input type="color" type="text" name="color" value="#FFFFFF" id="pwnClr" 
     oninput="pwnColor()" /&gt;
+=======
+&lt;form&gt;
+    &lt;input type="color" type="text" value="#FFFFFF" id="pwnClr" 
+    oninput="pwnColor();sessionStorage.setItem('baseColor', this.value)" /&gt;
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
 &lt;/form&gt;
  &lt;/div&gt;
 &lt;div class="poster" id="posterblock" onmouseleave="posterPause('off')"&gt;
@@ -473,7 +503,11 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=966247
     title="Deck B playback Rate | Right click to reset"&gt;
 &lt;/form&gt;
 
+<<<<<<< HEAD
 &lt;span class="bonjour" title="Toggle fullscreen"&gt;
+=======
+&lt;span class="bonjour"&gt;
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     &lt;b&gt;𝄞&lt;/b&gt;
 &lt;/span&gt;
 
@@ -1666,6 +1700,7 @@ deckA.volume =
             max++;<span class="hljs-built_in">console</span>.log(max)
             
             setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ 
+<<<<<<< HEAD
                 posterAnim((max*<span class="hljs-number">105</span>)-<span class="hljs-built_in">window</span>.innerWidth)</pre></div></div>
             
         </li>
@@ -1682,6 +1717,10 @@ deckA.volume =
             </div>
             
             <div class="content"><div class='highlight'><pre>                <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'input'</span>).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">elem</span>) </span>{
+=======
+                posterAnim((max*<span class="hljs-number">105</span>)-<span class="hljs-built_in">window</span>.innerWidth)
+                <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'input[type="range"]'</span>).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">elem</span>) </span>{
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
                   elem.setAttribute(<span class="hljs-string">"onmouseover"</span>,<span class="hljs-string">"posterPause('on')"</span>)
                   elem.setAttribute(<span class="hljs-string">"onmouseleave"</span>,<span class="hljs-string">"posterPause('off')"</span>)
                 })
@@ -1710,11 +1749,19 @@ deckA.volume =
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-71">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-71">&#182;</a>
+=======
+        <li id="section-70">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-70">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>~ setTimeout(function(){ posterAnim()}, 3000);</p>
 
@@ -1729,11 +1776,19 @@ deckA.volume =
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-72">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-72">&#182;</a>
+=======
+        <li id="section-71">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-71">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>Opposite color</p>
 
@@ -1756,7 +1811,12 @@ deckA.volume =
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pwnColor</span>(<span class="hljs-params"></span>) </span>{
+<<<<<<< HEAD
     <span class="hljs-built_in">document</span>.body.parentElement.style.backgroundColor = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'pwnClr'</span>).value
+=======
+    <span class="hljs-built_in">document</span>.body.parentElement.style.backgroundColor =
+     <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'pwnClr'</span>).value
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     <span class="hljs-built_in">document</span>.body.style.color = 
     <span class="hljs-string">"#"</span>+returnOpposite(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'pwnClr'</span>).value.slice(<span class="hljs-number">1</span>))
     <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'a:not(.mark)'</span>).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">elem</span>) </span>{
@@ -1768,11 +1828,19 @@ deckA.volume =
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-73">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-73">&#182;</a>
+=======
+        <li id="section-72">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-72">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>Fix for firefox position:fixed bug when using css transformation</p>
 
@@ -1784,8 +1852,12 @@ deckA.volume =
     <span class="hljs-built_in">document</span>.body.setAttribute(<span class="hljs-string">"onresize"</span>,<span class="hljs-string">"fixScroll()"</span>)
     <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"mixer"</span>)[<span class="hljs-number">0</span>].style.margin = <span class="hljs-string">"380px 0px 0px 0px"</span>
     <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"bonjour"</span>)[<span class="hljs-number">0</span>].style.margin = <span class="hljs-string">"0 0 0 -60px"</span>
+<<<<<<< HEAD
     <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"left"</span>)[<span class="hljs-number">0</span>].style.margin = <span class="hljs-string">"1% 0 0 -2%"</span>
     <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"mixRight"</span>)[<span class="hljs-number">0</span>].style.padding = <span class="hljs-string">".9% 0 0 1%"</span>
+=======
+    <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"mixRight"</span>)[<span class="hljs-number">0</span>].style.margin = <span class="hljs-string">".9% 0 0 10%"</span>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"rateControls"</span>).style.display = <span class="hljs-string">"block"</span>
 }
 
@@ -1800,11 +1872,19 @@ deckA.volume =
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-74">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-74">&#182;</a>
+=======
+        <li id="section-73">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-73">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>Bitch</p>
 
@@ -1813,24 +1893,41 @@ deckA.volume =
             <div class="content"><div class='highlight'><pre>        inj = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'style'</span>);
         inj.innerHTML += 
             <span class="hljs-string">".mixRight { opacity:0 }.left { opacity:0 } \
+<<<<<<< HEAD
             #listing { top:16.5%;max-height:64%;max-width:36%;margin:1% auto} \
             #listingB { top:16.5%;max-height:64%;max-width:36%;left:57%;margin: 0 0 0 -20px} \
+=======
+            #listing { top:130px;max-height:64%;max-width:36% } \
+            #listingB { top:130px;max-height:64%;max-width:36%;left:57% } \
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
             .files {position:block;width:100%;max-width:100%} \
             #audB{top:12%}\#aud{position:fixed\;top:12%\;left:0px} \
             .bonjour {display:none}#trackA {display:none } \
             #trackB {display:none }input[type='file'] {transform:rotate(0deg)"</span>
         <span class="hljs-built_in">document</span>.body.appendChild(inj);
     }
+<<<<<<< HEAD
     <span class="hljs-keyword">if</span> (showmebabe == <span class="hljs-string">"on"</span>){</pre></div></div>
+=======
+    <span class="hljs-keyword">if</span> (yala == <span class="hljs-string">"on"</span>){</pre></div></div>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
             
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-75">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-75">&#182;</a>
+=======
+        <li id="section-74">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-74">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>Bitch</p>
 
@@ -1841,8 +1938,13 @@ deckA.volume =
             .mixRight {opacity:1  } \
             .left { opacity:1 } \
             #listing {top: unset;max-height: 49%;max-width: 44% } \
+<<<<<<< HEAD
             #listing { top:330px;max-height:49%;max-width:44%;left:6%;margin:0 0 0 -20px} \
             #listingB { top:330px;max-height:44%;max-width:44%;left:56%;margin:0 0 0 -20px} \
+=======
+            #listing { top:330px;max-height:49%;max-width:44%;left:6%} \
+            #listingB { top:330px;max-height:44%;max-width:44%;left:56%} \
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
             .files { position:fixed;width:102%;max-width:100%} \
             #audB{ position:block;top:50%;left:unset} \
             #aud{ position:block;top:50%;left:unset} \
@@ -1883,7 +1985,10 @@ deckA.volume =
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">trackNameA</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">try</span> {
      trackA.innerHTML = <span class="hljs-built_in">document</span>.getElementById(deckA.src).dataset.track
+<<<<<<< HEAD
      <span class="hljs-built_in">document</span>.title = <span class="hljs-built_in">document</span>.getElementById(deckA.src).dataset.track + <span class="hljs-string">"THOT"</span>
+=======
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     }
     <span class="hljs-keyword">catch</span> (nope) {}
     deckA.play()
@@ -1892,7 +1997,10 @@ deckA.volume =
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">trackNameB</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">try</span> {
      trackB.innerHTML = <span class="hljs-built_in">document</span>.getElementById(deckB.src).dataset.track
+<<<<<<< HEAD
      <span class="hljs-built_in">document</span>.title = <span class="hljs-built_in">document</span>.getElementById(deckB.src).dataset.track + <span class="hljs-string">"THOT"</span>
+=======
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     }
     <span class="hljs-keyword">catch</span> (nope) {}
     deckB.play()
@@ -1924,11 +2032,19 @@ deckA.volume =
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-76">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-76">&#182;</a>
+=======
+        <li id="section-75">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-75">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>Deck B equalizer main function</p>
 
@@ -1964,11 +2080,19 @@ deckA.volume =
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-77">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-77">&#182;</a>
+=======
+        <li id="section-76">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-76">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>Equalizer deck A main function</p>
 
@@ -2004,11 +2128,19 @@ deckA.volume =
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-78">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-78">&#182;</a>
+=======
+        <li id="section-77">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-77">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>reset Eq deck A</p>
 
@@ -2034,11 +2166,19 @@ deckA.volume =
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-79">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-79">&#182;</a>
+=======
+        <li id="section-78">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-78">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>Reset Eq deck B</p>
 
@@ -2064,6 +2204,7 @@ deckA.volume =
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-80">
             <div class="annotation">
               
@@ -2088,6 +2229,13 @@ deckA.volume =
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-81">&#182;</a>
+=======
+        <li id="section-79">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-79">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>drag drop</p>
 
@@ -2114,11 +2262,19 @@ deckA.volume =
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-82">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-82">&#182;</a>
+=======
+        <li id="section-80">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-80">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>~ dragged.className += “ dropped”;</p>
 
@@ -2129,11 +2285,19 @@ deckA.volume =
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-83">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-83">&#182;</a>
+=======
+        <li id="section-81">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-81">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>keyboard events</p>
 
@@ -2238,11 +2402,19 @@ deckA.volume =
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-84">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-84">&#182;</a>
+=======
+        <li id="section-82">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-82">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>~ onload = (function(){
 ~ pwnClr.value = ‘#’+Math.floor(Math.random()*16777215).toString(16);
@@ -2253,11 +2425,19 @@ deckA.volume =
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-85">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-85">&#182;</a>
+=======
+        <li id="section-83">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-83">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>Nice color from the user html input on load
 ~ pwnColor()</p>
@@ -2267,6 +2447,7 @@ deckA.volume =
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-86">
             <div class="annotation">
               
@@ -2274,6 +2455,15 @@ deckA.volume =
                 <a class="pilcrow" href="#section-86">&#182;</a>
               </div>
               <p>The page is ready, let’s prepare some more stuffs</p>
+=======
+        <li id="section-84">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-84">&#182;</a>
+              </div>
+              <p>The page is ready, let’s do some more stuffs</p>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
 
             </div>
             
@@ -2282,37 +2472,63 @@ deckA.volume =
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-87">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-87">&#182;</a>
+=======
+        <li id="section-85">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-85">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>Call back the page color set by user</p>
 
             </div>
             
+<<<<<<< HEAD
             <div class="content"><div class='highlight'><pre>    pwnClr.value = localStorage.getItem(<span class="hljs-string">'baseColor'</span>) || <span class="hljs-string">"#FFFFFF"</span></pre></div></div>
+=======
+            <div class="content"><div class='highlight'><pre>    pwnClr.value = sessionStorage.getItem(<span class="hljs-string">'baseColor'</span>)</pre></div></div>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
             
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-88">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-88">&#182;</a>
+=======
+        <li id="section-86">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-86">&#182;</a>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
               <p>Allow fullscreen by dualclick on the page body</p>
 
             </div>
             
+<<<<<<< HEAD
             <div class="content"><div class='highlight'><pre>    <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"bonjour"</span>)[<span class="hljs-number">0</span>].setAttribute(<span class="hljs-string">"data-fullscreen"</span>,<span class="hljs-string">"off"</span>)
     <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"bonjour"</span>)[<span class="hljs-number">0</span>].setAttribute(<span class="hljs-string">"onclick"</span>,<span class="hljs-string">"if(this.dataset.fullscreen =='off'){this.dataset.fullscreen='on';fullScreen()}else{this.dataset.fullscreen='off';regularScreen()}"</span>)</pre></div></div>
+=======
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-built_in">document</span>.body.setAttribute(<span class="hljs-string">"data-fullscreen"</span>,<span class="hljs-string">"off"</span>)
+    <span class="hljs-built_in">document</span>.body.setAttribute(<span class="hljs-string">"ondblclick"</span>,<span class="hljs-string">"if(this.dataset.fullscreen =='off'){this.dataset.fullscreen='on';fullScreen()}else{this.dataset.fullscreen='off';regularScreen()}"</span>)</pre></div></div>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
             
         </li>
         
         
+<<<<<<< HEAD
         <li id="section-89">
             <div class="annotation">
               
@@ -2339,6 +2555,15 @@ deckA.volume =
                 <a class="pilcrow" href="#section-90">&#182;</a>
               </div>
               <p>Calculate and display colors based on user needs</p>
+=======
+        <li id="section-87">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-87">&#182;</a>
+              </div>
+              <p>Calculate and display user colors </p>
+>>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
 
             </div>
             
