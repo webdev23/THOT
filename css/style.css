@@ -1,0 +1,635 @@
+
+/**
+ * P𝄞yer | Dual deck audio player | dual 7 bands Equalizer
+ **
+  Nico KraZhtest | 2017 | ponyhacks.com
+*/
+html {} body {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    display: inline;
+    background-color: #FFFFFF;
+    font: caption;
+    font-size: 23px;
+    color: #2c2323;
+    outline: none;
+    overflow: hidden;
+    transform: scale(0.6);
+    /* zoom: 0.6; */
+    user-select: none
+}
+a,
+a:visited {
+    color: #0a0a0a;
+    text-decoration: none;
+    cursor: pointer
+}
+a:hover {
+    color: #001;
+    opacity: .8;
+    background-color: green;
+    border-radius: 21px
+}
+h1 {
+    display: inline
+}
+hr {
+    background-color: grey
+}
+audio {
+    opacity: .7;
+    width: 100%;
+    height: 40px;
+    filter: sepia(0) invert(100%) saturate(0%) brightness(1.5) grayscale(0%) hue-rotate(360deg) contrast(100%)
+}
+button {
+    font-size: 1.2em;
+    background-color: black;
+    color: #dedede;
+    z-index: 99;
+    cursor: pointer;
+    transition: border-radius linear 3s
+}
+button:hover {
+    border-radius: 40px;
+    outline: 0;
+    background-color: chartreuse;
+    color: #626262
+}
+i {
+    color: #dedede
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+#deckA {
+    position: fixed;
+    margin: 0% 0% 0 6.5%;
+    width: 36%;
+    min-width: 36%;
+    max-width: 36%;
+    left: 0;
+    top: 0;
+    transform: scale(1.4);
+}
+#deckB {
+    position: fixed;
+    margin: 0% 50% 0 56.5%;
+    width: 36%;
+    min-width: 36%;
+    max-width: 36%;
+    left: 0;
+    top: 0;
+    transform: scale(1.4)
+}
+#ctrlBlock {
+    position: fixed;
+    left: 2%;
+    top: 300px;
+    z-index: -14;
+    display: inline-block;
+    word-break: break-all
+}
+#ctrlBlock a {
+    word-break: break-all
+}
+#listing {
+    display: inline-block;
+    float: left;
+    position: fixed;
+    top: 330px;
+    left: 6%;
+    min-height: 300px;
+    max-height: 42%;
+    max-width: 44%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: 20px;
+    font: caption;
+    direction: rtl;
+    width: 35%;
+    margin: 0 0 0 20px;
+    transition: all 0.2s ease-out
+}
+#listingB {
+    position: fixed;
+    top: 330px;
+    left: 56%;
+    width: 35%;
+    max-width: 35%;
+    display: inline-block;
+    min-height: 300px;
+    max-height: 42%;
+    max-width: 44%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: 20px;
+    font: caption;
+    margin: 0 0 0 -20px;
+    transition: top 0.5s
+}
+#listing a {
+    width: 500px;
+    max-width: 500px
+}
+#listingB a {
+    width: 400px;
+    max-width: 400px
+}
+#dice {
+    position: fixed;
+    top: 77%;
+    right: 0;
+    font-size: 1.27em;
+    float: right;
+    margin: 30px 0 0 0
+}
+.mixer {
+    transform: translateY(-100px);
+    margin: 250px 0 0 -6%
+}
+.mixerwebkitdemerde {
+    transform: scale(0.9);
+    margin: 18% 0 0 -6%
+}
+.mix {
+    transform: rotate(90deg);
+    transform-origin: center;
+    width: 200px;
+    display: inline;
+    margin: -140px;
+    padding: 0 0 0 35px;
+    cursor: pointer
+}
+.mixreversed {
+    transform: rotate(-90deg);
+    transform-origin: center;
+    width: 200px;
+    display: inline;
+    margin: -140px;
+    padding: 0 0 0 35px;
+    cursor: pointer
+}
+.mixRight {
+    position: fixed;
+    left: 82%;
+    margin: 0.8% 0 0 10%;
+    transition: opacity 0.2s
+}
+#mid {
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+input[type=range]::-moz-slider-thumb {
+    background-color: #dedede;
+    border-radius: 23px;
+    height: 88px;
+    width: 88px;
+    outline: 0
+}
+input[type=range]::-moz-range-thumb {
+    width: 100px;
+    height: 100px
+}
+input[type="color"] {
+    width: 30%;
+    max-width: 5%;
+    height: 40px
+}
+hr {
+    color: white
+}
+.right {
+    float: right;
+}
+.left {
+    padding: 1% 0 0 1%;
+    position: fixed;
+    left: 36%;
+    transition: opacity 0.2s
+}
+.main {
+    margin: -108px 0 0 0;
+    min-width: 600px;
+    min-height: 500px;
+    z-index: -1
+}
+.filesBlock {
+    position: fixed;
+    top: 45px;
+    left: 2%;
+    font-size: 0.6em;
+    font: caption;
+    padding: 10px
+}
+#sliderTracks {
+    z-index: 108;
+    position: fixed;
+    top: 100px;
+    left: 39.667%;
+    right: 40%;
+    width: 20%
+}
+#sliderTracksRatio {
+    z-index: 108;
+    position: fixed;
+    top: 140px;
+    left: 46%;
+    right: 46%;
+    width: 8%
+}
+#sliderTracksRatio::-moz-range-thumb {
+    height: 8px;
+    width: 8px;
+}
+#aud {
+    float: left;
+    max-width: 44%;
+    transition: top 1s
+}
+#audB {
+    position: fixed;
+    top: 50%;
+    right: -64px;
+    transition: top 1s
+}
+.files {
+    width: 102%;
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: -66px
+}
+.nicebar {
+    top: 55%;
+    left: 2%;
+    display: inline
+}
+.moonlist {
+    width: 10px;
+}
+.moonlist a {
+    color: black;
+    display: table-cell;
+}
+.moonlist li {
+    margin: -4px 0 0 0;
+    min-height: 10em;
+}
+.mark {
+    background-color: #2f6b60;
+    color: chartreuse;
+    border-radius: 21px
+}
+.fullright {
+    float: right
+}
+.poster {
+    position: fixed;
+    top: 86%;
+    left: 0;
+    white-space: nowrap;
+    display: table;
+    animation: posteranimation 60s infinite;
+    animation-play-state: paused
+}
+.posteranim {
+    animation-play-state: running
+}
+#posterB {
+    display: none
+}
+.poster img {
+    height: 105px;
+    width: 105px;
+}
+#posterblock {
+    max-width: 940px;
+    width: 940px;
+    top: 84%;
+    left: -20px;
+    vertical-align: middle;
+    padding: 13px;
+    display: table-cell
+}
+.filesblockright {
+    background-color: white;
+    height: 260px;
+    vertical-align: middle
+}
+/* wesh poto */
+
+.bonjour {
+    position: fixed;
+    font-size: 80px;
+    top: 180px;
+    left: 51%;
+    margin: 0;
+    padding: 0 0px 0 20px;
+    text-align: center
+}
+.poster:hover {
+    transform: translateX(-1000px)
+}
+button,
+input[type=color] {
+    border-radius: 90px
+}
+.ctrlBa {
+    font-size: 0.7em;
+    position: fixed;
+    top: 65%;
+    right: -42px;
+    transform: rotate(90deg)
+}
+.ctrlBb {
+    position: fixed;
+    top: 32%;
+    right: -7px;
+    transform: rotate(90deg)
+}
+.buttonFoo {
+    position: fixed;
+    top: 21%;
+    right: -7px;
+    font-size: 1.8em
+}
+.buttonBar {
+    position: fixed;
+    top: 14%;
+    right: -7px;
+    font-size: 1.8em
+}
+.buttonshoweq {
+    position: fixed;
+    top: 40%;
+    font-size: 1.2em;
+    right: -7px
+}
+#trackA {
+    font-size: 0.8em;
+    float: left;
+    position: fixed;
+    max-width: 44%;
+    top: 54px;
+    left: 5%
+}
+#trackB {
+    font-size: 0.8em;
+    position: fixed;
+    float: right;
+    max-width: 44%;
+    max-height: 12px;
+    top: 54px;
+    left: 53%
+}
+#ledA,
+#ledB {
+    position: fixed;
+    top: 52px;
+    width: 14px;
+    height: 14px;
+    opacity: .9;
+    border: 2px solid black;
+    border-radius: 20px
+}
+.led_on {
+    background-color: chartreuse;
+    animation: ledblink 0.5s infinite
+}
+.led_off {
+    background-color: #626262
+}
+.led_warning {
+    background-color: blue;
+    animation: ledblink 0.1s infinite
+}
+#ledA {
+    left: 1%
+}
+#ledB {
+    right: 1%
+}
+.drag {} .dropzone {
+    filter: sepia(0%) invert(87%) saturate(0%) brightness(1) grayscale(0%) hue-rotate(0deg) contrast(100%)
+}
+input[type='range']::-moz-focus-outer {
+    border: 0
+}
+#pwnClr {
+    position: fixed;
+    top: 72%;
+    right: 0;
+    font-size: 1.27em;
+    float: right;
+    margin: 30px 0 0 0;
+    width: 50px
+}
+#pitchA,
+#pitchB,
+#pitchscale {
+    position: fixed;
+    top: 40%;
+    margin: 10% 0 0 0;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    width: 23%;
+    max-width: 23%
+}
+#pitchA {
+    left: 36.5%
+}
+#pitchB {
+    right: 36.5%
+}
+#pitchscale {
+    font-size: 10px;
+    left: 38.3%;
+    max-width: 23%;
+    line-height: 0.1px
+}
+#pitchAcurrent,
+#pitchBcurrent {
+    position: fixed;
+    top: 36%
+}
+#pitchAlab {
+    font-size: 10px;
+    position: fixed;
+    top: 37.6%;
+    left: 47%
+}
+#pitchBlab {
+    font-size: 10px;
+    position: fixed;
+    top: 37.6%;
+    right: 47%
+}
+input[type="file"] {
+    transition: transform 1s;
+    transform: rotate(-90deg);
+    z-index: 999;
+    filter: sepia(0%) invert(87%) saturate(0%) brightness(1) grayscale(0%) hue-rotate(0deg) contrast(100%)
+}
+#rateControls {
+    display: none
+}
+@media all and (min-width: 104px) and (max-width: 1024px) {
+    .mixRight {
+        display: none
+    }
+    .left {
+        display: none;
+        left: 50%
+    }
+    #listing {
+        top: 130px;
+        max-height: 36%
+    }
+    #listingB {
+        top: 130px;
+        max-height: 36%
+    }
+    button {
+        display: none
+    }
+    input[type="file"] {
+        transform: rotate(0deg);
+        margin: -100px 0 0 0
+    }
+    .files {
+        position: inherit;
+        width: 100%;
+        max-width: 100%
+    }
+    #audB {
+        top: 190px
+    }
+    #aud {
+        position: fixed;
+        top: 190px;
+        left: 0
+    }
+    .bonjour {
+        display: none
+    }
+    #trackA {
+        display: none
+    }
+    #trackB {
+        display: none
+    }
+    #sliderTracks {
+        top: 60px;
+        width: 60%;
+        left: 20%;
+        right: 20%;
+    }
+}
+@media all and (min-height: 50px) and (max-height: 560px) {
+    .mixRight {
+        display: none
+    }
+    .left {
+        display: none
+    }
+    #listing {
+        top: 130px;
+        max-height: 55%;
+        max-width: 36%
+    }
+    #listingB {
+        top: 130px;
+        max-height: 55%;
+        max-width: 36%;
+        left: 57%
+    }
+    input[type="file"] {
+        transform: rotate(0deg);
+        margin: -100px 0 0 0
+    }
+    .files {
+        position: inherit;
+        width: 100%;
+        max-width: 100%
+    }
+    #audB {
+        top: 190px
+    }
+    #aud {
+        position: fixed;
+        top: 190px;
+        left: 0
+    }
+    .bonjour {
+        display: none
+    }
+    #trackA {
+        display: none
+    }
+    #trackB {
+        display: none
+    }
+    button {
+        display: none
+    }
+}
+@media all and (min-height: 10px) and (max-height: 250px) {
+    .slider {
+        display: none
+    }
+    button {
+        display: none
+    }
+    input[type="file"] {
+        transform: rotate(0deg);
+        margin: -140px 0 0 0
+    }
+    #listing {
+        top: 70px;
+        left: -2.5%
+    }
+    #listingB {
+        top: 70px;
+        left: 49%;
+        width: 42%
+    }
+    .poster {
+        display: none
+    }
+    .bonjour {
+        display: none
+    }
+    .mixRight {
+        display: none
+    }
+    .left {
+        display: none
+    }
+}
+@keyframes ledblink {
+    0% {
+        opacity: 1
+    }
+    50% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+@keyframes posteranimation {
+    0% {
+        transform: translateX(0px)
+    }
+    50% {
+        transform: translateX(-2000px)
+    }
+    100% {
+        transform: translateX(0px)
+    }
+}
