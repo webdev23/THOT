@@ -525,31 +525,19 @@ deckB.src = list[0];
 // Listen for a click event on the first FOO button
 buttonFoo.addEventListener("click", function() {
   // if playlist number in range
-  if (playlist > 0) {
+  if (playlist >= 1) {
     // decrement  
     playlist--;
     // Change the player source and reload
     document.getElementsByTagName("audio")[0].src = list[playlist];
     document.getElementsByTagName("audio")[0].load();
-
-    // Give indication about current track
-    document.getElementsByTagName("span")[0].innerHTML =
-      "Now playing the track number " + playlist + " <i>" +
-       document.getElementsByTagName("audio")[0].
-      src.replace("http://ponyhacks.com/img/www/medias/fw/", "") + "</i>";
-    console.log("Now loading: " + playlist);
     // Avoid collision
     return false;
   } // Else jump to last track
   else {
     playlist = list.length;
-    document.getElementsByTagName("audio")[0].src = list[playlist];
+    document.getElementsByTagName("audio")[0].src = list[list.length];
     document.getElementsByTagName("audio")[0].load();
-    // Give indication
-    document.getElementsByTagName("span")[0].innerHTML =
-      "Now playing the track: <i>" +
-       document.getElementsByTagName("audio")[0].src.
-       replace("http://ponyhacks.com/img/www/medias/fw/", "") + "</i>";
     console.log("This is the last track: " + playlist);
     // Important to avoid collision 
     return false;
@@ -562,25 +550,13 @@ buttonBar.addEventListener("click", function() {
     playlist++;
     document.getElementsByTagName("audio")[0].src = list[playlist];
     document.getElementsByTagName("audio")[0].load();
-    // Get track name
-
-    let target = document.getElementById(document.getElementsByTagName("audio")[0].src);
-    // target.datatrack
-
-    // Replacing non needed url part with blank text & dump in span element 
-    document.getElementsByTagName("span")[0].innerHTML =
-      "Now playing [" + playlist + "] <i>" + target.children[0].id; + "</i>";
-    console.log("Now loading the track: " + playlist);
-    // Important to avoid collision
+    // Avoid collision
     return false;
   } else {
     playlist = 0;
     document.getElementsByTagName("audio")[0].src = list[playlist];
     document.getElementsByTagName("audio")[0].load();
-    document.getElementsByTagName("span")[0].innerHTML =
-      "This is the first track: <i>" + document.getElementsByTagName("audio")[0].src.replace("http://ponyhacks.com/img/www/medias/fw/", "") + "</i>";
     console.log("Now coming back to the first track");
-    // Important to avoid collision
     return false;
   }
 })
@@ -592,7 +568,6 @@ document.getElementById("aud").addEventListener("change", function(event) {
   let output = document.getElementById("listing");
   let files = event.target.files;
   let URL = window.URL || window.webkitURL;
-
 for (let i = 0; i < files.length; i++) {
    if (files[i].type === "audio/mpeg" ||
        files[i].type === "audio/mp3"  ||
@@ -602,7 +577,6 @@ for (let i = 0; i < files.length; i++) {
     let item = document.createElement("li")
     let elemSrc = URL.createObjectURL(files[i])
     let elemPath = files[i].webkitRelativePath.replace(/["']/g, "")
-    
     item.innerHTML += 
     "<a class='moonlist' onclick=\"deckB.src='"+
         elemSrc+"';autoDeckB(sliderTracksRatio.value);deckB.play();deckB.dataset.track='"+
