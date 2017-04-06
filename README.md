@@ -11,6 +11,8 @@
  * Song notifications
  * Automixer, autoplaylists
  ***
+ * Please check the docs for more details: https://webdev23.github.io/THOT/docs/
+ ***
  *  Nico KraZhtest | 2017 | ponyhacks.com
  ***
  * Keyboard events (Azerty):
