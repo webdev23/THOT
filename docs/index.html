@@ -2,11 +2,7 @@
 
 <html>
 <head>
-<<<<<<< HEAD
   <title>index.js</title>
-=======
-  <title>THOT | That HTML Obvious Turntable | Docs</title>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -19,11 +15,7 @@
         
           <li id="title">
               <div class="annotation">
-<<<<<<< HEAD
                   <h1>index.js</h1>
-=======
-                  <h1>THOT | That HTML Obvious Turntable | Docs</h1>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
               </div>
           </li>
         
@@ -35,26 +27,18 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p>~ Block console.log
-~ console.log = function() {}</p>
+              <p>~ Block console.info
+~ console.info = function() {}</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>
 <span class="hljs-comment">/*** 
-<<<<<<< HEAD
  * THOT | This HTML Orgasmic Turntable
  * Dual deck audio player with crossfader and dual 7 bands Equalizer
  * Find songs in many local folders to organize a random playlist
  * Full keyboard controls
  ***
-=======
- * P𝄞yer | Dual deck audio player | dual 7 bands Equalizer
- * Full js | no library used but:
- * - The web audio api
- * - The file reader api
- ****
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
  *  Nico KraZhtest | 2017 | ponyhacks.com
  ***
  * Keyboard events (Azerty):
@@ -81,10 +65,6 @@
  *--
  ***
  * Basic usage from js:
-<<<<<<< HEAD
-=======
- * 
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
  * Check the current playlist tracks array
  * list
  * 
@@ -106,7 +86,7 @@
  * Play the playlist numbered 13 on deckA:
  * deckA.src = list[13]
  * 
- * Fade automation from the deck B to A in (350)ms
+ * Fade automation from the deck B to A in 35 seconds 
  * autoDeckA(350)
  * 
  * Show the Equalizer:
@@ -163,10 +143,14 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">let</span> buttonFoo = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"button"</span>)
-<span class="hljs-keyword">let</span> buttonBar = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"button"</span>)
-buttonFoo.className = <span class="hljs-string">"buttonFoo"</span>
-buttonBar.className = <span class="hljs-string">"buttonBar"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">let</span> deckAnext = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"button"</span>)
+<span class="hljs-keyword">let</span> deckAlast = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"button"</span>)
+<span class="hljs-keyword">let</span> deckBnext = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"button"</span>)
+<span class="hljs-keyword">let</span> deckBlast = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"button"</span>)
+deckAnext.className = <span class="hljs-string">"deckplaylist deckAnext"</span>
+deckAlast.className = <span class="hljs-string">"deckplaylist deckAlast"</span>
+deckBnext.className = <span class="hljs-string">"deckplaylist deckBnext"</span>
+deckBlast.className = <span class="hljs-string">"deckplaylist deckBlast"</span></pre></div></div>
             
         </li>
         
@@ -269,11 +253,11 @@ a.setAttribute(<span class="hljs-string">"ondragover"</span>, <span class="hljs-
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <p>Blink a led if a track is a playing, to be defined later</p>
+              <p>Blink a led if a track is a playing</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>a.setAttribute(<span class="hljs-string">"onplaying"</span>, <span class="hljs-string">"ledAcheck()"</span>)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>a.setAttribute(<span class="hljs-string">"onplaying"</span>, <span class="hljs-string">"ledAcheck();notifTrack(deckA.src)"</span>)</pre></div></div>
             
         </li>
         
@@ -359,7 +343,7 @@ So let’s create another one:</p>
     deckB.setAttribute(<span class="hljs-string">"ondurationchange"</span>, <span class="hljs-string">"trackNameB()"</span>)
     deckB.setAttribute(<span class="hljs-string">"ondrop"</span>, <span class="hljs-string">"drop(event)"</span>)
     deckB.setAttribute(<span class="hljs-string">"ondragover"</span>, <span class="hljs-string">"allowDrop(event)"</span>)
-    deckB.setAttribute(<span class="hljs-string">"onplaying"</span>, <span class="hljs-string">"ledBcheck()"</span>)
+    deckB.setAttribute(<span class="hljs-string">"onplaying"</span>, <span class="hljs-string">"ledBcheck();notifTrack(deckB.src)"</span>)
     deckB.setAttribute(<span class="hljs-string">"onseeked"</span>, <span class="hljs-string">"ledBcheck()"</span>)
     deckB.setAttribute(<span class="hljs-string">"ontimeupdate"</span>, <span class="hljs-string">"ledBcheck()"</span>)
     deckB.setAttribute(<span class="hljs-string">"onpause"</span>, <span class="hljs-string">"ledB.className = 'led_off'"</span>)
@@ -384,7 +368,7 @@ Let’s focus anywhere, like the first html <div></p>
 
 <span class="hljs-keyword">let</span> mixer = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>)
 mixer.innerHTML = <span class="hljs-string">`
-&lt;div class="mixer"&gt;
+&lt;div class="mixer" draggable&gt;
  &lt;!-- Deck A --&gt;
  &lt;div class="left"&gt;
 &lt;form&gt;
@@ -407,7 +391,7 @@ mixer.innerHTML = <span class="hljs-string">`
 
  &lt;!-- Deck B --&gt;
  &lt;div&gt;
-	 
+     
  &lt;form class="mixRight"&gt;
     &lt;!-- &lt;label&gt;Low Gain&lt;/label&gt; --&gt;
     &lt;input type="range" id="lowGainKnob_deckB" class="mixreversed" value="50"
@@ -435,11 +419,7 @@ mixer.innerHTML = <span class="hljs-string">`
 &lt;!-- Slider --&gt;
 &lt;form class="slider" id="sliderForm"&gt;
  &lt;input type="range" id="sliderTracks" name="slidertracks" 
-<<<<<<< HEAD
-   oninput="fadeTracks()" onclick="clearAutomation()" value="50" step="1" min="1" max="99" /&gt;
-=======
-   oninput="fadeTracks()" value="50" step="1" min="1" max="99" /&gt;
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+   oninput="fadeTracks()" oncontextmenu="clearAutomation();return false" title="Right click to reset all automation" value="0" step="1" min="1" max="99" /&gt;
  &lt;input type="range" id="sliderTracksRatio" 
   value="5" step="5" min="5" max="400" /&gt;
 &lt;/form&gt;
@@ -459,21 +439,17 @@ mixer.innerHTML = <span class="hljs-string">`
 &lt;button type="button" class="ctrlBb" onclick="return resetAll();"&gt;&amp;#7360;&lt;/button&gt;
 &lt;button type="button" class="buttonshoweq" value="on" 
 onclick="if(this.value=='off'){this.value='on'}else{this.value='off'};showEq(this.value);"&gt;
-&amp;#119661;&lt;/button&gt;
+&amp;#128335;&lt;/button&gt;
+&lt;button type="button" id="buttonNotif" class="active" value="on" 
+onclick="if(this.value=='off'){this.value='on';this.className='active'}else{this.value='off';this.className=''}" title="Toggle notifications"&gt;&amp;#9748;&lt;/button&gt;
 
 &lt;!-- Files inputs--&gt;
 &lt;ul id="listing" oninput="pwnColor()"&gt;&lt;/ul&gt;
 &lt;ul id="listingB" oninput="pwnColor()"&gt;&lt;/ul&gt;
 
-<<<<<<< HEAD
 &lt;form onchange="localStorage.setItem('baseColor', color.value)"&gt;
     &lt;input type="color" type="text" name="color" value="#FFFFFF" id="pwnClr" 
     oninput="pwnColor()" /&gt;
-=======
-&lt;form&gt;
-    &lt;input type="color" type="text" value="#FFFFFF" id="pwnClr" 
-    oninput="pwnColor();sessionStorage.setItem('baseColor', this.value)" /&gt;
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
 &lt;/form&gt;
  &lt;/div&gt;
 &lt;div class="poster" id="posterblock" onmouseleave="posterPause('off')"&gt;
@@ -503,16 +479,17 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=966247
     title="Deck B playback Rate | Right click to reset"&gt;
 &lt;/form&gt;
 
-<<<<<<< HEAD
 &lt;span class="bonjour" title="Toggle fullscreen"&gt;
-=======
-&lt;span class="bonjour"&gt;
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     &lt;b&gt;𝄞&lt;/b&gt;
 &lt;/span&gt;
 
-&lt;span id="ledA"&gt;&lt;/span&gt;
-&lt;span id="ledB"&gt;&lt;/span&gt;
+&lt;span id="ledA" onclick="lyrics(deckA)"&gt;&lt;/span&gt;
+&lt;span id="ledB" onclick="lyrics(deckB)"&gt;&lt;/span&gt;
+
+
+&lt;div id="artist"&gt;yo&lt;/div&gt;
+&lt;span id="closelyrics" onclick="document.documentElement.style.cssText += ' ;transform:translateY(0px)';fixScroll()"&gt;X&lt;/span&gt;
+
 `</span></pre></div></div>
             
         </li>
@@ -528,10 +505,12 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=966247
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>target.appendChild(buttonFoo)
-target.appendChild(buttonBar)
-target.appendChild(sp)
-target.appendChild(mixer)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    target.appendChild(deckAnext)
+    target.appendChild(deckAlast)
+    target.appendChild(deckBnext)
+    target.appendChild(deckBlast)
+    target.appendChild(sp)
+    target.appendChild(mixer)</pre></div></div>
             
         </li>
         
@@ -547,8 +526,8 @@ This way our parents buttons can gently ask stuffs to their player childrens</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>sp.appendChild(a)
-sp.appendChild(deckB)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    sp.appendChild(a)
+    sp.appendChild(deckB)</pre></div></div>
             
         </li>
         
@@ -591,7 +570,15 @@ sp.appendChild(deckB)</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
-              <p>We need gain control </p>
+              <p>~ var node = context.createScriptProcessor(1024, 1, 1);
+~ node.onaudioprocess = function (e) {
+~ var output = e.outputBuffer.getChannelData(0);
+~ for (var i = 0; i &lt; output.length; i++) {
+~ output[i] = Math.random();
+~ }
+~ };
+~ node.connect(context.destination);
+We need gain control </p>
 
             </div>
             
@@ -780,13 +767,13 @@ We are going to build a 7 band equalizer</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>sourceNode.connect(lBand)
-sourceNode.connect(lBand02)
-sourceNode.connect(lBand03)
-sourceNode.connect(mBand)
-sourceNode.connect(hBand05)
-sourceNode.connect(hBand06)
-sourceNode.connect(hBand)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    sourceNode.connect(lBand)
+    sourceNode.connect(lBand02)
+    sourceNode.connect(lBand03)
+    sourceNode.connect(mBand)
+    sourceNode.connect(hBand05)
+    sourceNode.connect(hBand06)
+    sourceNode.connect(hBand)</pre></div></div>
             
         </li>
         
@@ -801,12 +788,12 @@ sourceNode.connect(hBand)</pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>hBand.connect(hInvert)
-hBand05.connect(lInvert02)
-hBand06.connect(lInvert03)
-lBand03.connect(hInvert06)
-lBand02.connect(hInvert05)
-lBand.connect(lInvert)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    hBand.connect(hInvert)
+    hBand05.connect(lInvert02)
+    hBand06.connect(lInvert03)
+    lBand03.connect(hInvert06)
+    lBand02.connect(hInvert05)
+    lBand.connect(lInvert)</pre></div></div>
             
         </li>
         
@@ -821,12 +808,12 @@ lBand.connect(lInvert)</pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>hInvert.connect(mBand)
-hInvert06.connect(mBand)
-hInvert05.connect(mBand)
-lInvert03.connect(mBand)
-lInvert02.connect(mBand)
-lInvert.connect(mBand)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    hInvert.connect(mBand)
+    hInvert06.connect(mBand)
+    hInvert05.connect(mBand)
+    lInvert03.connect(mBand)
+    lInvert02.connect(mBand)
+    lInvert.connect(mBand)</pre></div></div>
             
         </li>
         
@@ -862,13 +849,13 @@ lInvert.connect(mBand)</pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>lBand.connect(lGain)
-lBand02.connect(hGain06)
-lBand03.connect(hGain05)
-mBand.connect(mGain)
-hBand05.connect(lGain03)
-hBand06.connect(lGain02)
-hBand.connect(hGain)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    lBand.connect(lGain)
+    lBand02.connect(hGain06)
+    lBand03.connect(hGain05)
+    mBand.connect(mGain)
+    hBand05.connect(lGain03)
+    hBand06.connect(lGain02)
+    hBand.connect(hGain)</pre></div></div>
             
         </li>
         
@@ -898,13 +885,13 @@ hBand.connect(hGain)</pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>lGain.connect(sum)
-lGain02.connect(sum)
-lGain03.connect(sum)
-mGain.connect(sum)
-hGain05.connect(sum)
-hGain06.connect(sum)
-hGain.connect(sum)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    lGain.connect(sum)
+    lGain02.connect(sum)
+    lGain03.connect(sum)
+    mGain.connect(sum)
+    hGain05.connect(sum)
+    hGain06.connect(sum)
+    hGain.connect(sum)</pre></div></div>
             
         </li>
         
@@ -919,7 +906,7 @@ hGain.connect(sum)</pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>sum.connect(context.destination)
+            <div class="content"><div class='highlight'><pre>    sum.connect(context.destination)
 
 <span class="hljs-comment">/* Deck B EQualizer
  * 
@@ -1006,29 +993,29 @@ hGain.connect(sum)</pre></div></div>
     lBanddeckb.gain.value = gainDbdeckb
 
 <span class="hljs-keyword">let</span> lInvertdeckb = contextdeckb.createGain()
-lInvertdeckb.gain.value = <span class="hljs-number">-60.23</span>
-
-sourceNodedeckb.connect(lBanddeckb)
-sourceNodedeckb.connect(lBand02deckb)
-sourceNodedeckb.connect(lBand03deckb)
-sourceNodedeckb.connect(mBanddeckb)
-sourceNodedeckb.connect(hBand05deckb)
-sourceNodedeckb.connect(hBand06deckb)
-sourceNodedeckb.connect(hBanddeckb)
-
-hBanddeckb.connect(hInvertdeckb)
-hBand05deckb.connect(lInvert02deckb)
-hBand06deckb.connect(lInvert03deckb)
-lBand03deckb.connect(hInvert06deckb)
-lBand02deckb.connect(hInvert05deckb)
-lBanddeckb.connect(lInvertdeckb)
-
-hInvertdeckb.connect(mBanddeckb)
-hInvert06deckb.connect(mBanddeckb)
-hInvert05deckb.connect(mBanddeckb)
-lInvert03deckb.connect(mBanddeckb)
-lInvert02deckb.connect(mBanddeckb)
-lInvertdeckb.connect(mBanddeckb)
+    lInvertdeckb.gain.value = <span class="hljs-number">-60.23</span>
+    
+    sourceNodedeckb.connect(lBanddeckb)
+    sourceNodedeckb.connect(lBand02deckb)
+    sourceNodedeckb.connect(lBand03deckb)
+    sourceNodedeckb.connect(mBanddeckb)
+    sourceNodedeckb.connect(hBand05deckb)
+    sourceNodedeckb.connect(hBand06deckb)
+    sourceNodedeckb.connect(hBanddeckb)
+    
+    hBanddeckb.connect(hInvertdeckb)
+    hBand05deckb.connect(lInvert02deckb)
+    hBand06deckb.connect(lInvert03deckb)
+    lBand03deckb.connect(hInvert06deckb)
+    lBand02deckb.connect(hInvert05deckb)
+    lBanddeckb.connect(lInvertdeckb)
+    
+    hInvertdeckb.connect(mBanddeckb)
+    hInvert06deckb.connect(mBanddeckb)
+    hInvert05deckb.connect(mBanddeckb)
+    lInvert03deckb.connect(mBanddeckb)
+    lInvert02deckb.connect(mBanddeckb)
+    lInvertdeckb.connect(mBanddeckb)
 
 <span class="hljs-keyword">let</span> lGaindeckb = contextdeckb.createGain()
 <span class="hljs-keyword">let</span> lGain02deckb = contextdeckb.createGain()
@@ -1039,26 +1026,26 @@ lInvertdeckb.connect(mBanddeckb)
 <span class="hljs-keyword">let</span> hGaindeckb = contextdeckb.createGain()
 
 
-mGaindeckb.gain.value = <span class="hljs-number">-0.001</span>
+    mGaindeckb.gain.value = <span class="hljs-number">-0.001</span>
 
-lBanddeckb.connect(lGaindeckb)
-lBand02deckb.connect(hGain06deckb)
-lBand03deckb.connect(hGain05deckb)
-mBanddeckb.connect(mGaindeckb)
-hBand05deckb.connect(lGain03deckb)
-hBand06deckb.connect(lGain02deckb)
-hBanddeckb.connect(hGaindeckb)
+    lBanddeckb.connect(lGaindeckb)
+    lBand02deckb.connect(hGain06deckb)
+    lBand03deckb.connect(hGain05deckb)
+    mBanddeckb.connect(mGaindeckb)
+    hBand05deckb.connect(lGain03deckb)
+    hBand06deckb.connect(lGain02deckb)
+    hBanddeckb.connect(hGaindeckb)
+    
+    <span class="hljs-keyword">let</span> sumdeckb = contextdeckb.createGain()
+    lGaindeckb.connect(sumdeckb)
+    lGain02deckb.connect(sumdeckb)
+    lGain03deckb.connect(sumdeckb)
+    mGaindeckb.connect(sumdeckb)
+    hGain05deckb.connect(sumdeckb)
+    hGain06deckb.connect(sumdeckb)
+    hGaindeckb.connect(sumdeckb)
 
-<span class="hljs-keyword">let</span> sumdeckb = contextdeckb.createGain()
-lGaindeckb.connect(sumdeckb)
-lGain02deckb.connect(sumdeckb)
-lGain03deckb.connect(sumdeckb)
-mGaindeckb.connect(sumdeckb)
-hGain05deckb.connect(sumdeckb)
-hGain06deckb.connect(sumdeckb)
-hGaindeckb.connect(sumdeckb)
-
-sumdeckb.gain.value = <span class="hljs-number">0.1</span></pre></div></div>
+    sumdeckb.gain.value = <span class="hljs-number">0.1</span></pre></div></div>
             
         </li>
         
@@ -1073,7 +1060,7 @@ sumdeckb.gain.value = <span class="hljs-number">0.1</span></pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>sumdeckb.connect(context.destination)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    sumdeckb.connect(context.destination)</pre></div></div>
             
         </li>
         
@@ -1138,8 +1125,10 @@ This include the track number 0, for a total of 4 tracks<strong>___</strong>^^|^
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>buttonFoo.innerHTML = <span class="hljs-string">"↶"</span>;
-buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    deckAnext.innerHTML = <span class="hljs-string">"↶"</span>;
+    deckAlast.innerHTML = <span class="hljs-string">"↷"</span>;
+    deckBnext.innerHTML = <span class="hljs-string">"↶"</span>;
+    deckBlast.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
             
         </li>
         
@@ -1154,7 +1143,7 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>deckB.src = list[<span class="hljs-number">0</span>];</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    deckB.src = list[<span class="hljs-number">0</span>];</pre></div></div>
             
         </li>
         
@@ -1169,7 +1158,7 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>buttonFoo.addEventListener(<span class="hljs-string">"click"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</pre></div></div>
+            <div class="content"><div class='highlight'><pre>deckAnext.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</pre></div></div>
             
         </li>
         
@@ -1184,7 +1173,7 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">if</span> (playlist &gt; <span class="hljs-number">0</span>) {</pre></div></div>
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">if</span> (playlist &gt;= <span class="hljs-number">1</span>) {</pre></div></div>
             
         </li>
         
@@ -1214,8 +1203,8 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"audio"</span>)[<span class="hljs-number">0</span>].src = list[playlist];
-    <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"audio"</span>)[<span class="hljs-number">0</span>].load();</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    deckA.src = list[playlist];
+    deckA.load();</pre></div></div>
             
         </li>
         
@@ -1226,15 +1215,17 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-52">&#182;</a>
               </div>
-              <p>Give indication about current track</p>
+              <p>Avoid collision</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"span"</span>)[<span class="hljs-number">0</span>].innerHTML =
-      <span class="hljs-string">"Now playing the track number "</span> + playlist + <span class="hljs-string">" &lt;i&gt;"</span> +
-       <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"audio"</span>)[<span class="hljs-number">0</span>].
-      src.replace(<span class="hljs-string">"http://ponyhacks.com/img/www/medias/fw/"</span>, <span class="hljs-string">""</span>) + <span class="hljs-string">"&lt;/i&gt;"</span>;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Now loading: "</span> + playlist);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  } <span class="hljs-comment">// Else jump to last track</span>
+  <span class="hljs-keyword">else</span> {
+    playlist = list.length;
+    deckA.src = list[list.length];
+    deckA.load();
+    <span class="hljs-built_in">console</span>.info(<span class="hljs-string">"This is the last track: "</span> + playlist);</pre></div></div>
             
         </li>
         
@@ -1245,16 +1236,13 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-53">&#182;</a>
               </div>
-              <p>Avoid collision</p>
+              <p>Important to avoid collision </p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-  } <span class="hljs-comment">// Else jump to last track</span>
-  <span class="hljs-keyword">else</span> {
-    playlist = list.length;
-    <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"audio"</span>)[<span class="hljs-number">0</span>].src = list[playlist];
-    <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"audio"</span>)[<span class="hljs-number">0</span>].load();</pre></div></div>
+  }
+}</pre></div></div>
             
         </li>
         
@@ -1265,15 +1253,15 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-54">&#182;</a>
               </div>
-              <p>Give indication</p>
+              <p>Similar actions for the forward BAR button</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"span"</span>)[<span class="hljs-number">0</span>].innerHTML =
-      <span class="hljs-string">"Now playing the track: &lt;i&gt;"</span> +
-       <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"audio"</span>)[<span class="hljs-number">0</span>].src.
-       replace(<span class="hljs-string">"http://ponyhacks.com/img/www/medias/fw/"</span>, <span class="hljs-string">""</span>) + <span class="hljs-string">"&lt;/i&gt;"</span>;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"This is the last track: "</span> + playlist);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>deckAlast.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">if</span> (playlist &lt; list.length) {
+    playlist++;
+    deckA.src = list[playlist];
+    deckA.load();</pre></div></div>
             
         </li>
         
@@ -1284,13 +1272,21 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-55">&#182;</a>
               </div>
-              <p>Important to avoid collision </p>
+              <p>Avoid collision</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  } <span class="hljs-keyword">else</span> {
+    playlist = <span class="hljs-number">0</span>;
+    deckA.src = list[playlist];
+    deckA.load();
+    <span class="hljs-built_in">console</span>.info(<span class="hljs-string">"Now coming back to the first track"</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
   }
-})</pre></div></div>
+}
+
+deckBnext.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</pre></div></div>
             
         </li>
         
@@ -1301,15 +1297,11 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-56">&#182;</a>
               </div>
-              <p>Similar actions for the forward BAR button</p>
+              <p>if playlist number in range</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>buttonBar.addEventListener(<span class="hljs-string">"click"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">if</span> (playlist &lt; list.length) {
-    playlist++;
-    <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"audio"</span>)[<span class="hljs-number">0</span>].src = list[playlist];
-    <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"audio"</span>)[<span class="hljs-number">0</span>].load();</pre></div></div>
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">if</span> (playlist &gt;= <span class="hljs-number">1</span>) {</pre></div></div>
             
         </li>
         
@@ -1320,12 +1312,11 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-57">&#182;</a>
               </div>
-              <p>Get track name</p>
+              <p>decrement  </p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
-    <span class="hljs-keyword">let</span> target = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"audio"</span>)[<span class="hljs-number">0</span>].src);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    playlist--;</pre></div></div>
             
         </li>
         
@@ -1336,9 +1327,12 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-58">&#182;</a>
               </div>
-              <p>target.datatrack</p>
+              <p>Change the player source and reload</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>    deckB.src = list[playlist];
+    deckB.load();</pre></div></div>
             
         </li>
         
@@ -1349,13 +1343,17 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-59">&#182;</a>
               </div>
-              <p>Replacing non needed url part with blank text &amp; dump in span element </p>
+              <p>Avoid collision</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"span"</span>)[<span class="hljs-number">0</span>].innerHTML =
-      <span class="hljs-string">"Now playing ["</span> + playlist + <span class="hljs-string">"] &lt;i&gt;"</span> + target.children[<span class="hljs-number">0</span>].id; + <span class="hljs-string">"&lt;/i&gt;"</span>;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Now loading the track: "</span> + playlist);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  } <span class="hljs-comment">// Else jump to last track</span>
+  <span class="hljs-keyword">else</span> {
+    playlist = list.length;
+    deckB.src = list[list.length];
+    deckB.load();
+    <span class="hljs-built_in">console</span>.info(<span class="hljs-string">"This is the last track: "</span> + playlist);</pre></div></div>
             
         </li>
         
@@ -1366,18 +1364,13 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-60">&#182;</a>
               </div>
-              <p>Important to avoid collision</p>
+              <p>Important to avoid collision </p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-  } <span class="hljs-keyword">else</span> {
-    playlist = <span class="hljs-number">0</span>;
-    <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"audio"</span>)[<span class="hljs-number">0</span>].src = list[playlist];
-    <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"audio"</span>)[<span class="hljs-number">0</span>].load();
-    <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"span"</span>)[<span class="hljs-number">0</span>].innerHTML =
-      <span class="hljs-string">"This is the first track: &lt;i&gt;"</span> + <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"audio"</span>)[<span class="hljs-number">0</span>].src.replace(<span class="hljs-string">"http://ponyhacks.com/img/www/medias/fw/"</span>, <span class="hljs-string">""</span>) + <span class="hljs-string">"&lt;/i&gt;"</span>;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Now coming back to the first track"</span>);</pre></div></div>
+  }
+}</pre></div></div>
             
         </li>
         
@@ -1388,13 +1381,15 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-61">&#182;</a>
               </div>
-              <p>Important to avoid collision</p>
+              <p>Similar actions for the forward BAR button</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-  }
-})</pre></div></div>
+            <div class="content"><div class='highlight'><pre>deckBlast.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">if</span> (playlist &lt; list.length) {
+    playlist++;
+    deckB.src = list[playlist];
+    deckB.load();</pre></div></div>
             
         </li>
         
@@ -1405,11 +1400,19 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-62">&#182;</a>
               </div>
-              <p>Reset Eq on load</p>
+              <p>Avoid collision</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>resetAll();</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  } <span class="hljs-keyword">else</span> {
+    playlist = <span class="hljs-number">0</span>;
+    deckB.src = list[playlist];
+    deckB.load();
+    <span class="hljs-built_in">console</span>.info(<span class="hljs-string">"Now coming back to the first track"</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  }
+}</pre></div></div>
             
         </li>
         
@@ -1420,52 +1423,11 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-63">&#182;</a>
               </div>
-              <p>Watch for user file input on deck a playlist</p>
+              <p>Reset Eq on load</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"aud"</span>).addEventListener(<span class="hljs-string">"change"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
-  <span class="hljs-keyword">let</span> output = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"listing"</span>);
-  <span class="hljs-keyword">let</span> files = event.target.files;
-  <span class="hljs-keyword">let</span> URL = <span class="hljs-built_in">window</span>.URL || <span class="hljs-built_in">window</span>.webkitURL;
-
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; files.length; i++) {
-   <span class="hljs-keyword">if</span> (files[i].type === <span class="hljs-string">"audio/mpeg"</span> ||
-       files[i].type === <span class="hljs-string">"audio/mp3"</span>  ||
-       files[i].type === <span class="hljs-string">"audio/flac"</span> ||
-       files[i].type === <span class="hljs-string">"image/jpeg"</span> ||
-       files[i].type === <span class="hljs-string">"video/ogg"</span>) {
-    <span class="hljs-keyword">let</span> item = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"li"</span>)
-    <span class="hljs-keyword">let</span> elemSrc = URL.createObjectURL(files[i])
-    <span class="hljs-keyword">let</span> elemPath = files[i].webkitRelativePath.replace(<span class="hljs-regexp">/["']/g</span>, <span class="hljs-string">""</span>)
-    
-    item.innerHTML += 
-    <span class="hljs-string">"&lt;a class='moonlist' onclick=\"deckB.src='"</span>+
-        elemSrc+<span class="hljs-string">"';autoDeckB(sliderTracksRatio.value);deckB.play();deckB.dataset.track='"</span>+
-        elemPath+<span class="hljs-string">"';this.className='mark'\"&gt;♴&lt;/a&gt; \
-    &lt;a class='moonlist' onclick=\"deckA.src='"</span>+elemSrc+
-        <span class="hljs-string">"';autoDeckA(sliderTracksRatio.value);this.className='mark';deckA.dataset.track='"</span>+
-        elemPath+<span class="hljs-string">"';deckA.play()\"&gt;♳&lt;/a&gt; \
-    &lt;a class='drag' draggable='true' ondragstart='drag(event)' data-track='"</span>+
-        elemPath+<span class="hljs-string">"' onclick=\"document.getElementsByTagName('audio')[0].src='"</span> + 
-        elemSrc + <span class="hljs-string">"';this.className='mark';deckA.dataset.track='"</span>+elemPath+
-        <span class="hljs-string">"'\"&gt;"</span> + elemPath + <span class="hljs-string">"&lt;/a&gt;"</span>
-
-    list.push(elemSrc)
-    
-    <span class="hljs-keyword">if</span> (files[i].type === <span class="hljs-string">"image/jpeg"</span>){
-        item.style.display=<span class="hljs-string">"none"</span>
-    }
-    
-    item.dataset.track = elemPath;
-    item.children[<span class="hljs-number">2</span>].id = elemSrc;
-
-    output.appendChild(item)
-}}
-    (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ poster() }, <span class="hljs-number">10000</span>)
-    })()
-}, <span class="hljs-literal">false</span>)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>resetAll();</pre></div></div>
             
         </li>
         
@@ -1480,7 +1442,78 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
 
             </div>
             
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"aud"</span>).addEventListener(<span class="hljs-string">"change"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+
+  <span class="hljs-keyword">let</span> output = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"listing"</span>)
+  <span class="hljs-keyword">let</span> files = event.target.files;
+  <span class="hljs-keyword">let</span> URL = <span class="hljs-built_in">window</span>.URL || <span class="hljs-built_in">window</span>.webkitURL
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; files.length; i++) {
+   <span class="hljs-keyword">if</span> (files[i].type === <span class="hljs-string">"audio/mpeg"</span> ||
+       files[i].type === <span class="hljs-string">"audio/mp3"</span>  ||
+       files[i].type === <span class="hljs-string">"audio/flac"</span> ||
+       files[i].type === <span class="hljs-string">"image/jpeg"</span> ||
+       files[i].type === <span class="hljs-string">"video/ogg"</span>) {
+    <span class="hljs-keyword">let</span> item = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"li"</span>)
+    <span class="hljs-keyword">let</span> elemSrc = URL.createObjectURL(files[i])
+    <span class="hljs-keyword">let</span> elemPath = files[i].webkitRelativePath.replace(<span class="hljs-regexp">/["']/g</span>, <span class="hljs-string">""</span>)
+
+    item.innerHTML += 
+    <span class="hljs-string">"&lt;a class='moonlist' onclick=\"deckB.src='"</span>+
+        elemSrc+<span class="hljs-string">"';autoDeckB(sliderTracksRatio.value);deckB.play();deckB.dataset.track='"</span>+
+        elemPath+<span class="hljs-string">"';this.className='mark'\"&gt;⮣&lt;/a&gt; \
+    &lt;a class='moonlist' onclick=\"deckA.src='"</span>+elemSrc+
+        <span class="hljs-string">"';autoDeckA(sliderTracksRatio.value);this.className='mark';deckA.dataset.track='"</span>+
+        elemPath+<span class="hljs-string">"';deckA.play()\"&gt;⮢&lt;/a&gt; \
+    &lt;a class='drag' draggable='true' ondragstart='drag(event)' data-track='"</span>+
+        elemPath+<span class="hljs-string">"' onclick=\"document.getElementsByTagName('audio')[0].src='"</span> + 
+        elemSrc + <span class="hljs-string">"';this.className='mark';deckA.dataset.track='"</span>+elemPath+
+        <span class="hljs-string">"'\"&gt;"</span> + elemPath + <span class="hljs-string">"&lt;/a&gt;"</span>
+
+    list.push(elemSrc)
+    
+    <span class="hljs-keyword">if</span> (files[i].type === <span class="hljs-string">"image/jpeg"</span>){
+        item.style.display=<span class="hljs-string">"none"</span>
+    }
+
+    item.dataset.track = elemPath;
+    item.children[<span class="hljs-number">2</span>].id = elemSrc;
+
+    output.appendChild(item)
+    
+    <span class="hljs-keyword">let</span> j = i
+    <span class="hljs-keyword">let</span> f = files.length
+    <span class="hljs-built_in">console</span>.log(j+<span class="hljs-string">" "</span>+f)
+
+    <span class="hljs-keyword">let</span> tag = setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        id3(files[i], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, tags</span>) </span>{
+                    <span class="hljs-built_in">console</span>.log(err, tags);
+                     <span class="hljs-built_in">console</span>.log(i+<span class="hljs-string">" "</span>+files.length)
+            item.dataset.tags = <span class="hljs-built_in">Object</span>.entries(tags)
+                             <span class="hljs-built_in">window</span>.clearInterval(tag)
+
+                }); }, <span class="hljs-number">5000</span>)
+
+}}
+    (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ poster() }, <span class="hljs-number">10000</span>)
+    })()
+}, <span class="hljs-literal">false</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-65">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-65">&#182;</a>
+              </div>
+              <p>Watch for user file input on deck a playlist</p>
+
+            </div>
+            
             <div class="content"><div class='highlight'><pre><span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"audB"</span>).addEventListener(<span class="hljs-string">"change"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+
   <span class="hljs-keyword">let</span> output = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"listingB"</span>)
   <span class="hljs-keyword">let</span> files = event.target.files
   <span class="hljs-keyword">let</span> URL = <span class="hljs-built_in">window</span>.URL || <span class="hljs-built_in">window</span>.webkitURL
@@ -1497,9 +1530,10 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
     <span class="hljs-keyword">let</span> elemPath = files[i].webkitRelativePath.replace(<span class="hljs-regexp">/["']/g</span>, <span class="hljs-string">""</span>)
     item.innerHTML = <span class="hljs-string">"&lt;a class='moonlist' onclick=\"deckA.src='"</span>+elemSrc+
         <span class="hljs-string">"';autoDeckA(sliderTracksRatio.value);deckA.dataset.track='"</span>+elemPath+
-        <span class="hljs-string">"';this.className='mark';deckA.play()\"&gt;♳&lt;/a&gt; \
-        &lt;a class='moonlist' onclick=\"deckB.src='"</span>+elemSrc+<span class="hljs-string">"';autoDeckB(sliderTracksRatio.value);deckB.play();deckB.dataset.track='"</span>+
-        elemPath+<span class="hljs-string">"';this.className='mark'\"&gt;♴&lt;/a&gt; | \
+        <span class="hljs-string">"';this.className='mark';deckA.play()\"&gt;⮢&lt;/a&gt; \
+        &lt;a class='moonlist' onclick=\"deckB.src='"</span>+elemSrc+
+        <span class="hljs-string">"';autoDeckB(sliderTracksRatio.value);deckB.play();deckB.dataset.track='"</span>+
+        elemPath+<span class="hljs-string">"';this.className='mark'\"&gt;⮣&lt;/a&gt; | \
         &lt;a class='drag' draggable='true' ondragstart='drag(event)' data-track='"</span>+
         elemPath+<span class="hljs-string">"' onclick=\"document.getElementsByTagName('audio')[1].src='"</span> + 
         elemSrc + <span class="hljs-string">"';this.className='mark';\
@@ -1513,69 +1547,54 @@ buttonBar.innerHTML = <span class="hljs-string">"↷"</span>;</pre></div></div>
     item.dataset.track = elemPath
     item.children[<span class="hljs-number">2</span>].id = elemSrc
     
+    <span class="hljs-keyword">let</span> j = i
+    <span class="hljs-keyword">let</span> f = files.length
+    <span class="hljs-built_in">console</span>.log(j+<span class="hljs-string">" "</span>+f)
+
+    <span class="hljs-keyword">let</span> tag = setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        id3(files[i], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, tags</span>) </span>{
+                    <span class="hljs-built_in">console</span>.log(err, tags);
+                     <span class="hljs-built_in">console</span>.log(i+<span class="hljs-string">" "</span>+files.length)
+            item.dataset.tags = <span class="hljs-built_in">Object</span>.entries(tags)
+                             <span class="hljs-built_in">window</span>.clearInterval(tag)
+
+                }); }, <span class="hljs-number">1000</span>)
+    
     output.appendChild(item)
 }}
     (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
     setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ poster() }, <span class="hljs-number">10000</span>)
     })()
 
-}, <span class="hljs-literal">false</span>);</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-65">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-65">&#182;</a>
-              </div>
-              <p>Automix Random track</p>
+}, <span class="hljs-literal">false</span>)
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">trackRandom</span>(<span class="hljs-params"></span>) </span>{
-  playlist = list.length;
-  deckA.src = list[<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * playlist) + <span class="hljs-number">1</span>)]
-  deckB.src = list[<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * playlist) + <span class="hljs-number">1</span>)]
-  deckA.play()
-  deckB.play()
- <span class="hljs-keyword">if</span> (deckA.paused){
-  deckA.pause()
- }
- <span class="hljs-keyword">if</span> (deckB.paused) {
-  deckB.pause()
- }
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lyrics</span>(<span class="hljs-params">deck</span>) </span>{
+
+<span class="hljs-keyword">let</span> w = <span class="hljs-built_in">window</span>.innerHeight,
+    me = deck.src
+    artist.innerHTML = <span class="hljs-string">"&lt;small&gt;&lt;i&gt;Fetching lyrics...&lt;/i&gt;&lt;/small&gt;"</span>
+    artist.style.cssText += <span class="hljs-string">" ;transform:translateY(-"</span>+w*<span class="hljs-number">0.5</span>+<span class="hljs-string">"px)"</span>
+    <span class="hljs-built_in">document</span>.documentElement.style.cssText += <span class="hljs-string">" ;transform:translateY("</span>+w*<span class="hljs-number">0.918</span>+<span class="hljs-string">"px)"</span>
+    <span class="hljs-built_in">document</span>.documentElement.style.cssText += <span class="hljs-string">" height:"</span>+<span class="hljs-built_in">window</span>.innerHeight+<span class="hljs-string">"px"</span>
+    ajax(me)
 }
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">trackRandomA</span>(<span class="hljs-params"></span>) </span>{
-  playlist = list.length;
-  deckA.src = list[<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * playlist) + <span class="hljs-number">1</span>)];
-  deckA.play()
-}
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">trackRandomB</span>(<span class="hljs-params"></span>) </span>{
-  playlist = list.length;
-  deckB.src = list[<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * playlist) + <span class="hljs-number">1</span>)];
-  deckB.play()
-}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ajax</span>(<span class="hljs-params">me</span>)</span>{
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fadeTracksParametrics</span>(<span class="hljs-params"></span>) </span>{
-<span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"sliderTracks"</span>).value &lt;= <span class="hljs-string">"50"</span>){
-  deckA.volume = <span class="hljs-string">"1"</span>;
-  deckB.volume = (<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"sliderTracks"</span>).value / sliderTracks.value)
-}
-<span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"sliderTracks"</span>).value &gt;= <span class="hljs-string">"50"</span>){
-  deckB.volume = <span class="hljs-string">"1"</span>;
-  deckA.volume = <span class="hljs-number">1</span> - (<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"sliderTracks"</span>).value / sliderTracks.value)
-}
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"sliderTracksRatio"</span>).value)
-}
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fadeTracks</span>(<span class="hljs-params"></span>) </span>{
-deckB.volume =
-  ((<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"sliderTracks"</span>).value *<span class="hljs-number">0.05</span> ) / sliderTracksRatio.value).toFixed(<span class="hljs-number">2</span>) 
-deckA.volume =
-  <span class="hljs-built_in">Math</span>.abs(<span class="hljs-number">1</span> - ((<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"sliderTracks"</span>).value *<span class="hljs-number">0.05</span>) / sliderTracksRatio.value)).toFixed(<span class="hljs-number">2</span>)
+<span class="hljs-keyword">try</span> {    
+<span class="hljs-keyword">let</span> aId3 = <span class="hljs-built_in">document</span>.getElementById(me).parentNode.dataset.tags
+<span class="hljs-keyword">let</span> aId3title = aId3.split(<span class="hljs-string">','</span>, <span class="hljs-number">2</span>)[<span class="hljs-number">1</span>]
+<span class="hljs-keyword">let</span> aId3artist = aId3.split(<span class="hljs-string">','</span>, <span class="hljs-number">6</span>)[<span class="hljs-number">5</span>]
+<span class="hljs-keyword">let</span> lyrics = <span class="hljs-keyword">new</span> XMLHttpRequest()
+    lyrics.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">if</span> (lyrics.readyState == XMLHttpRequest.DONE) {
+            <span class="hljs-built_in">console</span>.log(lyrics.responseText)
+            artist.innerHTML = lyrics.responseText || <span class="hljs-string">"&lt;small&gt;&lt;i&gt;No lyrics&lt;/i&gt;&lt;/small&gt;"</span> 
+        }}
+    lyrics.open(<span class="hljs-string">'GET'</span>, <span class="hljs-string">'https://ponyhacks.com/open/api/lyrics/?title='</span> + aId3title + <span class="hljs-string">'&amp;artist='</span> + aId3artist , <span class="hljs-literal">true</span>)
+    lyrics.send(<span class="hljs-literal">null</span>)
+    }
+<span class="hljs-keyword">catch</span> (nope) {artist.innerHTML = <span class="hljs-string">"&lt;small&gt;&lt;i&gt;Id3 tags are missing.&lt;/i&gt;&lt;/small&gt;"</span>}
 }</pre></div></div>
             
         </li>
@@ -1587,13 +1606,63 @@ deckA.volume =
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-66">&#182;</a>
               </div>
+              <p>Automix Random track</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">trackRandom</span>(<span class="hljs-params"></span>) </span>{
+
+  playlist = list.length;
+  deckA.src = list[<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * playlist) + <span class="hljs-number">1</span>)]
+  deckB.src = list[<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * playlist) + <span class="hljs-number">1</span>)]
+  deckA.play()
+  deckB.play()
+ <span class="hljs-keyword">if</span> (deckA.paused){
+  deckA.pause()
+ }
+ <span class="hljs-keyword">if</span> (deckB.paused) { 
+  deckB.pause()
+ }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">trackRandomA</span>(<span class="hljs-params"></span>) </span>{
+
+  playlist = list.length;
+  deckA.src = list[<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * playlist) + <span class="hljs-number">1</span>)];
+  deckA.play()
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">trackRandomB</span>(<span class="hljs-params"></span>) </span>{
+
+  playlist = list.length;
+  deckB.src = list[<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * playlist) + <span class="hljs-number">1</span>)];
+  deckB.play()
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fadeTracks</span>(<span class="hljs-params"></span>) </span>{
+
+deckB.volume =
+  ((<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"sliderTracks"</span>).value *<span class="hljs-number">0.05</span> ) / sliderTracksRatio.value).toFixed(<span class="hljs-number">2</span>)
+deckA.volume =
+  <span class="hljs-built_in">Math</span>.abs(<span class="hljs-number">1</span> - ((<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"sliderTracks"</span>).value *<span class="hljs-number">0.05</span>) / sliderTracksRatio.value)).toFixed(<span class="hljs-number">2</span>)
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-67">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-67">&#182;</a>
+              </div>
               <p>Autoplay if specified in url hash: #autoplay</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.location.hash.substr(<span class="hljs-number">1</span>) === <span class="hljs-string">"autoplay"</span>){
-     deckA.setAttribute(<span class="hljs-string">"autoplay"</span>, <span class="hljs-string">""</span>)
-      deckB.setAttribute(<span class="hljs-string">"autoplay"</span>, <span class="hljs-string">""</span>)
+    deckA.setAttribute(<span class="hljs-string">"autoplay"</span>, <span class="hljs-string">""</span>)
+    deckB.setAttribute(<span class="hljs-string">"autoplay"</span>, <span class="hljs-string">""</span>)
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">autoDeckB</span>(<span class="hljs-params">ms</span>)</span>{
@@ -1609,14 +1678,14 @@ deckA.volume =
      <span class="hljs-keyword">let</span> rate = (<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"sliderTracks"</span>).value * ratioBA) + gate
         <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"sliderTracks"</span>).value = (rate*<span class="hljs-number">0.88</span>).toFixed(<span class="hljs-number">1</span>)
         deckA.volume = <span class="hljs-number">1</span>- (gate * (ratioAB*<span class="hljs-number">0.88</span>)) 
-        deckB.volume =  (gate * (ratioAB * <span class="hljs-number">0.88</span>))
-        <span class="hljs-built_in">console</span>.log(((rate*<span class="hljs-number">0.8</span>)*<span class="hljs-number">0.70</span>).toFixed(<span class="hljs-number">1</span>))
+        deckB.volume = (gate * (ratioAB * <span class="hljs-number">0.88</span>))
         <span class="hljs-keyword">if</span> (deckB.volume &gt;= <span class="hljs-string">"0.99"</span>){
            mix_stop()
         }}
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mix_stop</span>(<span class="hljs-params"></span>) </span>{
-        clearInterval(timer_automation);
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Automation deckA to deckB completed!"</span>)
+        clearAutomation()
+        <span class="hljs-built_in">console</span>.info(<span class="hljs-string">"Automation to deckB complete"</span>)
+        <span class="hljs-built_in">console</span>.table(<span class="hljs-string">"DeckB: "</span> + <span class="hljs-built_in">document</span>.getElementById(deckA.src).dataset.track)
 }}
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">autoDeckA</span>(<span class="hljs-params">ms</span>)</span>{
@@ -1625,12 +1694,11 @@ deckA.volume =
 <span class="hljs-keyword">let</span> timer_automation = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ mix_BA() }, ms)
 <span class="hljs-keyword">let</span> timer_holder = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"sliderTracks"</span>).value
 <span class="hljs-keyword">let</span> ratioAB =<span class="hljs-string">"0.0073"</span>
-<span class="hljs-keyword">let</span> ratioBA =<span class="hljs-string">"0.0083"</span>
+<span class="hljs-keyword">let</span> ratioBA =<span class="hljs-string">"0.01"</span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mix_BA</span>(<span class="hljs-params"></span>) </span>{
         <span class="hljs-keyword">let</span> gate = j--
         <span class="hljs-keyword">let</span> rate = (<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"sliderTracks"</span>).value * ratioAB) + gate
-        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"sliderTracks"</span>).value = (rate*<span class="hljs-number">0.86</span>).toFixed(<span class="hljs-number">1</span>)
-        <span class="hljs-built_in">console</span>.log((rate*<span class="hljs-number">0.86</span>).toFixed(<span class="hljs-number">1</span>))
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"sliderTracks"</span>).value = (rate*<span class="hljs-number">0.88</span>).toFixed(<span class="hljs-number">1</span>)
         deckA.volume =  <span class="hljs-number">1</span>-(gate * (ratioBA*<span class="hljs-number">0.88</span>)).toFixed(<span class="hljs-number">1</span>)
         deckB.volume =  (gate * (ratioBA * <span class="hljs-number">0.98</span>)).toFixed(<span class="hljs-number">1</span>)
         <span class="hljs-keyword">if</span> (deckA.volume &gt;= <span class="hljs-string">"0.99"</span>){
@@ -1638,18 +1706,19 @@ deckA.volume =
 }}
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mixA_stop</span>(<span class="hljs-params"></span>) </span>{
-   clearInterval(timer_automation);
-   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Automation deckB to deckA completed!"</span>)
+    clearAutomation()
+    <span class="hljs-built_in">console</span>.info(<span class="hljs-string">"Automation to deckA complete"</span>)
+    <span class="hljs-built_in">console</span>.table(<span class="hljs-string">"DeckB: "</span> + <span class="hljs-built_in">document</span>.getElementById(deckA.src).dataset.track)
 }}</pre></div></div>
             
         </li>
         
         
-        <li id="section-67">
+        <li id="section-68">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-67">&#182;</a>
+                <a class="pilcrow" href="#section-68">&#182;</a>
               </div>
               <p>Posters</p>
 
@@ -1660,17 +1729,18 @@ deckA.volume =
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">poster</span>(<span class="hljs-params"></span>)</span>{
 
 <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">".drag"</span>).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">element</span>) </span>{
+
     <span class="hljs-keyword">let</span> poster = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"img"</span>);
         poster.setAttribute(<span class="hljs-string">"data-tracksrc"</span>,element.id)</pre></div></div>
             
         </li>
         
         
-        <li id="section-68">
+        <li id="section-69">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-68">&#182;</a>
+                <a class="pilcrow" href="#section-69">&#182;</a>
               </div>
               <p>Max Posters Avoid lagging</p>
 
@@ -1686,41 +1756,50 @@ deckA.volume =
         </li>
         
         
-        <li id="section-69">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-69">&#182;</a>
-              </div>
-              <p>~ console.log(element.dataset.track);</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>            posterA.appendChild(poster)
-            max++;<span class="hljs-built_in">console</span>.log(max)
-            
-            setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ 
-<<<<<<< HEAD
-                posterAnim((max*<span class="hljs-number">105</span>)-<span class="hljs-built_in">window</span>.innerWidth)</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-70">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-70">&#182;</a>
               </div>
+              <p>~ console.info(element.dataset.track);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            posterA.appendChild(poster)
+            max++;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-71">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-71">&#182;</a>
+              </div>
+              <p>~ console.info(max)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+            setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ 
+                posterAnim((max*<span class="hljs-number">105</span>)-<span class="hljs-built_in">window</span>.innerWidth)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-72">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-72">&#182;</a>
+              </div>
               <p>Block poster animation when inputs to avoid UI lags</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>                <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'input'</span>).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">elem</span>) </span>{
-=======
-                posterAnim((max*<span class="hljs-number">105</span>)-<span class="hljs-built_in">window</span>.innerWidth)
-                <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'input[type="range"]'</span>).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">elem</span>) </span>{
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
                   elem.setAttribute(<span class="hljs-string">"onmouseover"</span>,<span class="hljs-string">"posterPause('on')"</span>)
                   elem.setAttribute(<span class="hljs-string">"onmouseleave"</span>,<span class="hljs-string">"posterPause('off')"</span>)
                 })
@@ -1730,7 +1809,9 @@ deckA.volume =
 })}
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">posterAnim</span>(<span class="hljs-params">margin</span>)</span>{
+
     <span class="hljs-keyword">let</span> inj = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'style'</span>);
+    
     inj.innerHTML=<span class="hljs-string">"\
             .poster {animation-play-state:paused}\
             .posteranim {animation-play-state:running}\
@@ -1738,30 +1819,24 @@ deckA.volume =
               0%   { transform: translateX(0px) }\
               50% { transform: translateX(-"</span>+margin+<span class="hljs-string">"px) }\
               100% { transform: translateX(0px) }"</span>
+              
     <span class="hljs-built_in">document</span>.body.appendChild(inj)
     <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"poster"</span>)[<span class="hljs-number">0</span>].className += <span class="hljs-string">" posteranim"</span>
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">posterPause</span>(<span class="hljs-params">toggle</span>)</span>{
+
     <span class="hljs-keyword">if</span> (toggle === <span class="hljs-string">"off"</span>){
-         <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"poster"</span>)[<span class="hljs-number">0</span>].style.animationPlayState=<span class="hljs-string">"running"</span></pre></div></div>
+        <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"poster"</span>)[<span class="hljs-number">0</span>].style.animationPlayState=<span class="hljs-string">"running"</span></pre></div></div>
             
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-71">
+        <li id="section-73">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-71">&#182;</a>
-=======
-        <li id="section-70">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-70">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-73">&#182;</a>
               </div>
               <p>~ setTimeout(function(){ posterAnim()}, 3000);</p>
 
@@ -1776,47 +1851,38 @@ deckA.volume =
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-72">
+        <li id="section-74">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-72">&#182;</a>
-=======
-        <li id="section-71">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-71">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-74">&#182;</a>
               </div>
               <p>Opposite color</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">decimalToHex</span>(<span class="hljs-params">decimal</span>) </span>{
+
   <span class="hljs-keyword">let</span> hex = decimal.toString(<span class="hljs-number">16</span>)
   <span class="hljs-keyword">if</span> (hex.length == <span class="hljs-number">1</span>) hex = <span class="hljs-string">'0'</span> + hex
   <span class="hljs-keyword">return</span> hex
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hexToDecimal</span>(<span class="hljs-params">hex</span>) </span>{
+
     <span class="hljs-keyword">return</span> <span class="hljs-built_in">parseInt</span>(hex,<span class="hljs-number">16</span>)
 }
  
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">returnOpposite</span>(<span class="hljs-params">colour</span>) </span>{
+    
   <span class="hljs-keyword">return</span> decimalToHex(<span class="hljs-number">255</span> - hexToDecimal(colour.substr(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>))) 
     + decimalToHex(<span class="hljs-number">255</span> - hexToDecimal(colour.substr(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>))) 
     + decimalToHex(<span class="hljs-number">255</span> -  hexToDecimal(colour.substr(<span class="hljs-number">4</span>,<span class="hljs-number">2</span>)));
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pwnColor</span>(<span class="hljs-params"></span>) </span>{
-<<<<<<< HEAD
+
     <span class="hljs-built_in">document</span>.body.parentElement.style.backgroundColor = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'pwnClr'</span>).value
-=======
-    <span class="hljs-built_in">document</span>.body.parentElement.style.backgroundColor =
-     <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'pwnClr'</span>).value
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
     <span class="hljs-built_in">document</span>.body.style.color = 
     <span class="hljs-string">"#"</span>+returnOpposite(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'pwnClr'</span>).value.slice(<span class="hljs-number">1</span>))
     <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'a:not(.mark)'</span>).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">elem</span>) </span>{
@@ -1828,63 +1894,47 @@ deckA.volume =
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-73">
+        <li id="section-75">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-73">&#182;</a>
-=======
-        <li id="section-72">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-72">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-75">&#182;</a>
               </div>
               <p>Fix for firefox position:fixed bug when using css transformation</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">if</span> (!!<span class="hljs-built_in">window</span>.chrome &amp;&amp; !!<span class="hljs-built_in">window</span>.chrome.webstore){
+
     <span class="hljs-built_in">document</span>.body.setAttribute(<span class="hljs-string">"onscroll"</span>,<span class="hljs-string">"fixScroll()"</span>)
     <span class="hljs-built_in">document</span>.body.setAttribute(<span class="hljs-string">"onresize"</span>,<span class="hljs-string">"fixScroll()"</span>)
     <span class="hljs-built_in">document</span>.body.setAttribute(<span class="hljs-string">"onresize"</span>,<span class="hljs-string">"fixScroll()"</span>)
     <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"mixer"</span>)[<span class="hljs-number">0</span>].style.margin = <span class="hljs-string">"380px 0px 0px 0px"</span>
-    <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"bonjour"</span>)[<span class="hljs-number">0</span>].style.margin = <span class="hljs-string">"0 0 0 -60px"</span>
-<<<<<<< HEAD
-    <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"left"</span>)[<span class="hljs-number">0</span>].style.margin = <span class="hljs-string">"1% 0 0 -2%"</span>
+    <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"bonjour"</span>)[<span class="hljs-number">0</span>].style.margin = <span class="hljs-string">"0 0 0 -2.8%"</span>
+    <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"left"</span>)[<span class="hljs-number">0</span>].style.margin = <span class="hljs-string">"36px 0 0 -5%"</span>
     <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"mixRight"</span>)[<span class="hljs-number">0</span>].style.padding = <span class="hljs-string">".9% 0 0 1%"</span>
-=======
-    <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"mixRight"</span>)[<span class="hljs-number">0</span>].style.margin = <span class="hljs-string">".9% 0 0 10%"</span>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
-    <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"rateControls"</span>).style.display = <span class="hljs-string">"block"</span>
+    rateControls.style.display = <span class="hljs-string">"block"</span>
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fixScroll</span>(<span class="hljs-params"></span>)</span>{
+
+    <span class="hljs-built_in">document</span>.documentElement.style.cssText += <span class="hljs-string">" height:"</span>+<span class="hljs-built_in">window</span>.innerHeight+<span class="hljs-string">"px"</span>
     posterblock.style.top= (<span class="hljs-built_in">window</span>.innerHeight / <span class="hljs-number">1.2</span>) + <span class="hljs-built_in">window</span>.scrollY+<span class="hljs-string">'px'</span>
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showEq</span>(<span class="hljs-params">showmebabe</span>)</span>{
+
     <span class="hljs-keyword">let</span> inj
     <span class="hljs-keyword">if</span> (showmebabe == <span class="hljs-string">"off"</span>){</pre></div></div>
             
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-74">
+        <li id="section-76">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-74">&#182;</a>
-=======
-        <li id="section-73">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-73">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-76">&#182;</a>
               </div>
               <p>Bitch</p>
 
@@ -1893,41 +1943,24 @@ deckA.volume =
             <div class="content"><div class='highlight'><pre>        inj = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'style'</span>);
         inj.innerHTML += 
             <span class="hljs-string">".mixRight { opacity:0 }.left { opacity:0 } \
-<<<<<<< HEAD
-            #listing { top:16.5%;max-height:64%;max-width:36%;margin:1% auto} \
+            #listing { top:16.5%;max-height:64%;max-width:36%;left:6%;margin:1% auto} \
             #listingB { top:16.5%;max-height:64%;max-width:36%;left:57%;margin: 0 0 0 -20px} \
-=======
-            #listing { top:130px;max-height:64%;max-width:36% } \
-            #listingB { top:130px;max-height:64%;max-width:36%;left:57% } \
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
             .files {position:block;width:100%;max-width:100%} \
             #audB{top:12%}\#aud{position:fixed\;top:12%\;left:0px} \
             .bonjour {display:none}#trackA {display:none } \
             #trackB {display:none }input[type='file'] {transform:rotate(0deg)"</span>
         <span class="hljs-built_in">document</span>.body.appendChild(inj);
     }
-<<<<<<< HEAD
     <span class="hljs-keyword">if</span> (showmebabe == <span class="hljs-string">"on"</span>){</pre></div></div>
-=======
-    <span class="hljs-keyword">if</span> (yala == <span class="hljs-string">"on"</span>){</pre></div></div>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
             
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-75">
+        <li id="section-77">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-75">&#182;</a>
-=======
-        <li id="section-74">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-74">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-77">&#182;</a>
               </div>
               <p>Bitch</p>
 
@@ -1937,14 +1970,9 @@ deckA.volume =
         inj.innerHTML += <span class="hljs-string">"\
             .mixRight {opacity:1  } \
             .left { opacity:1 } \
-            #listing {top: unset;max-height: 49%;max-width: 44% } \
-<<<<<<< HEAD
-            #listing { top:330px;max-height:49%;max-width:44%;left:6%;margin:0 0 0 -20px} \
-            #listingB { top:330px;max-height:44%;max-width:44%;left:56%;margin:0 0 0 -20px} \
-=======
-            #listing { top:330px;max-height:49%;max-width:44%;left:6%} \
-            #listingB { top:330px;max-height:44%;max-width:44%;left:56%} \
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+            #listing {top: unset;max-height: 49%;left:9%;max-width: 44% } \
+            #listing { top:330px;max-height:49%;max-width:44%;margin:0 0 0 -20px} \
+            #listingB { top:330px;max-height:49%;max-width:44%;left:56%;margin:0 0 0 -20px} \
             .files { position:fixed;width:102%;max-width:100%} \
             #audB{ position:block;top:50%;left:unset} \
             #aud{ position:block;top:50%;left:unset} \
@@ -1957,56 +1985,127 @@ deckA.volume =
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ledAcheck</span>(<span class="hljs-params"></span>)</span>{
+
     <span class="hljs-keyword">if</span> (deckA.paused){
         ledA.className = <span class="hljs-string">'led_off'</span>
     }
     <span class="hljs-keyword">if</span> (!deckA.paused){
-        <span class="hljs-keyword">if</span> ((deckA.duration - deckA.currentTime) &gt;= <span class="hljs-number">30</span>) {
+      <span class="hljs-keyword">if</span> ((deckA.duration - deckA.currentTime) &gt;= <span class="hljs-number">30.3</span>) {
             ledA.className = <span class="hljs-string">'led_on'</span>
-    } <span class="hljs-keyword">else</span> { 
+        }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-78">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-78">&#182;</a>
+              </div>
+              <p>Allow 600ms    </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">if</span> ((deckA.duration - deckA.currentTime) &lt; <span class="hljs-number">20</span> &amp;&amp; (deckA.duration - deckA.currentTime) &gt;= <span class="hljs-number">19.4</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-79">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-79">&#182;</a>
+              </div>
+              <p>Avoid breaking a track  </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">if</span> (deckA.volume &gt;= <span class="hljs-number">0.9</span>) {
+            autoDeckB(<span class="hljs-number">60</span>)
+            <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">"Automix 6 seconds to deck B"</span>)
+        }}
+      <span class="hljs-keyword">if</span> ((deckA.duration - deckA.currentTime) &lt;= <span class="hljs-number">30.3</span>) { 
         ledA.className = <span class="hljs-string">'led_warning'</span>
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Warning: 30s till DeckA track end"</span>)
+        <span class="hljs-built_in">console</span>.info(<span class="hljs-string">"DeckA: "</span> + (deckA.duration - deckA.currentTime).toFixed(<span class="hljs-number">0</span>) +<span class="hljs-string">"s till end"</span>)
     }}
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ledBcheck</span>(<span class="hljs-params"></span>)</span>{
+
     <span class="hljs-keyword">if</span> (deckB.paused){
         ledB.className = <span class="hljs-string">'led_off'</span>
     }
     <span class="hljs-keyword">if</span> (!deckB.paused){
-        <span class="hljs-keyword">if</span> ((deckB.duration - deckB.currentTime) &gt;= <span class="hljs-number">30</span>) {
+     <span class="hljs-keyword">if</span> ((deckB.duration - deckB.currentTime) &gt;= <span class="hljs-number">30.3</span>) {
             ledB.className = <span class="hljs-string">'led_on'</span>
-    } <span class="hljs-keyword">else</span> { 
+        }
+     <span class="hljs-keyword">if</span> ((deckB.duration - deckB.currentTime) &lt; <span class="hljs-number">20</span> &amp;&amp; (deckB.duration - deckB.currentTime) &gt;= <span class="hljs-number">19.4</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-80">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-80">&#182;</a>
+              </div>
+              <p>Avoid to break a track  </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>       <span class="hljs-keyword">if</span> (deckB.volume &gt;= <span class="hljs-number">0.9</span>) {
+        autoDeckA(<span class="hljs-number">60</span>)
+        <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">"Automix 6 seconds to deck A"</span>)
+        }}
+     <span class="hljs-keyword">if</span> ((deckB.duration - deckB.currentTime) &lt;= <span class="hljs-number">30.3</span>) { 
         ledB.className = <span class="hljs-string">'led_warning'</span>
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Warning: 30s till DeckB track end"</span>)
+        <span class="hljs-built_in">console</span>.info(<span class="hljs-string">"DeckB: "</span> + (deckB.duration - deckB.currentTime).toFixed(<span class="hljs-number">0</span>) +<span class="hljs-string">"s till end"</span>)        
     }}
 }
 
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">notifTrack</span>(<span class="hljs-params">deck</span>) </span>{
+
+    <span class="hljs-keyword">try</span> {
+     <span class="hljs-keyword">let</span> t = <span class="hljs-built_in">document</span>.getElementById(deck).parentNode.dataset.tags,
+         title = t.split(<span class="hljs-string">','</span>, <span class="hljs-number">2</span>)[<span class="hljs-number">1</span>],
+         artist = t.split(<span class="hljs-string">','</span>, <span class="hljs-number">6</span>)[<span class="hljs-number">5</span>]
+         info(artist,title)
+    }
+    <span class="hljs-keyword">catch</span> (nope) {info(<span class="hljs-string">"Mind Blown"</span>,<span class="hljs-string">"No id3 tags found"</span>)}
+}
+
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">trackNameA</span>(<span class="hljs-params"></span>) </span>{
+
     <span class="hljs-keyword">try</span> {
      trackA.innerHTML = <span class="hljs-built_in">document</span>.getElementById(deckA.src).dataset.track
-<<<<<<< HEAD
-     <span class="hljs-built_in">document</span>.title = <span class="hljs-built_in">document</span>.getElementById(deckA.src).dataset.track + <span class="hljs-string">"THOT"</span>
-=======
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+     <span class="hljs-built_in">document</span>.title = <span class="hljs-built_in">document</span>.getElementById(deckA.src).dataset.track
+     <span class="hljs-built_in">document</span>.getElementById(deckA.src).style.cssText += <span class="hljs-string">" ;animation: ledblink 0.5s infinite"</span>
+     <span class="hljs-built_in">document</span>.getElementById(deckA.src).parentElement.children[<span class="hljs-number">0</span>].style.cssText += <span class="hljs-string">" ;animation: ledblink 0.5s infinite"</span>
+
+     <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">"DeckB now playing: "</span> + <span class="hljs-built_in">document</span>.getElementById(deckA.src).dataset.track)
     }
-    <span class="hljs-keyword">catch</span> (nope) {}
+    <span class="hljs-keyword">catch</span> (nope) {info(<span class="hljs-string">"Fucked"</span>,<span class="hljs-string">"Error"</span>)}
     deckA.play()
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">trackNameB</span>(<span class="hljs-params"></span>) </span>{
+
     <span class="hljs-keyword">try</span> {
      trackB.innerHTML = <span class="hljs-built_in">document</span>.getElementById(deckB.src).dataset.track
-<<<<<<< HEAD
-     <span class="hljs-built_in">document</span>.title = <span class="hljs-built_in">document</span>.getElementById(deckB.src).dataset.track + <span class="hljs-string">"THOT"</span>
-=======
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+     <span class="hljs-built_in">document</span>.title = <span class="hljs-built_in">document</span>.getElementById(deckB.src).dataset.track
+     <span class="hljs-built_in">document</span>.getElementById(deckB.src).style.cssText += <span class="hljs-string">" ;animation: ledblink 0.5s infinite"</span>
+     <span class="hljs-built_in">document</span>.getElementById(deckB.src).parentElement.children[<span class="hljs-number">1</span>].style.cssText += <span class="hljs-string">" ;animation: ledblink 0.5s infinite"</span>
+     <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">"DeckB now playing: "</span> + <span class="hljs-built_in">document</span>.getElementById(deckB.src).dataset.track)     
     }
     <span class="hljs-keyword">catch</span> (nope) {}
     deckB.play()
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fullScreen</span>(<span class="hljs-params"></span>) </span>{
+
     <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">document</span>.fullscreenElement &amp;&amp;
           !<span class="hljs-built_in">document</span>.mozFullScreenElement &amp;&amp; !<span class="hljs-built_in">document</span>.webkitFullscreenElement) {
       <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.documentElement.requestFullscreen) {
@@ -2020,6 +2119,7 @@ deckA.volume =
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">regularScreen</span>(<span class="hljs-params"></span>) </span>{  
+
     <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.cancelFullScreen) {
           <span class="hljs-built_in">document</span>.cancelFullScreen()
         } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.mozCancelFullScreen) {
@@ -2032,25 +2132,18 @@ deckA.volume =
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-76">
+        <li id="section-81">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-76">&#182;</a>
-=======
-        <li id="section-75">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-75">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-81">&#182;</a>
               </div>
               <p>Deck B equalizer main function</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeGaindeckb</span>(<span class="hljs-params">string, type</span>) </span>{
+
   <span class="hljs-keyword">let</span> value = <span class="hljs-built_in">parseFloat</span>(string) / <span class="hljs-number">100.0</span>;
   <span class="hljs-keyword">switch</span> (type) {
     <span class="hljs-keyword">case</span> <span class="hljs-string">'lowGain'</span>:
@@ -2080,25 +2173,18 @@ deckA.volume =
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-77">
+        <li id="section-82">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-77">&#182;</a>
-=======
-        <li id="section-76">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-76">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-82">&#182;</a>
               </div>
               <p>Equalizer deck A main function</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeGain</span>(<span class="hljs-params">string, type</span>) </span>{
+
   <span class="hljs-keyword">let</span> value = <span class="hljs-built_in">parseFloat</span>(string) / <span class="hljs-number">100.0</span>;
   <span class="hljs-keyword">switch</span> (type) {
     <span class="hljs-keyword">case</span> <span class="hljs-string">'lowGain'</span>:
@@ -2128,25 +2214,18 @@ deckA.volume =
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-78">
+        <li id="section-83">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-78">&#182;</a>
-=======
-        <li id="section-77">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-77">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-83">&#182;</a>
               </div>
               <p>reset Eq deck A</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resetAll</span>(<span class="hljs-params"></span>) </span>{
+
   changeGain(<span class="hljs-string">'50'</span>, <span class="hljs-string">'lowGain'</span>)
   changeGain(<span class="hljs-string">'50'</span>, <span class="hljs-string">'lowGain02'</span>)
   changeGain(<span class="hljs-string">'50'</span>, <span class="hljs-string">'lowGain03'</span>)
@@ -2166,25 +2245,18 @@ deckA.volume =
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-79">
+        <li id="section-84">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-79">&#182;</a>
-=======
-        <li id="section-78">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-78">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-84">&#182;</a>
               </div>
               <p>Reset Eq deck B</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resetAll</span>(<span class="hljs-params"></span>) </span>{
+
   changeGain(<span class="hljs-string">'50'</span>, <span class="hljs-string">'lowGain'</span>)
   changeGain(<span class="hljs-string">'50'</span>, <span class="hljs-string">'lowGain02'</span>)
   changeGain(<span class="hljs-string">'50'</span>, <span class="hljs-string">'lowGain03'</span>)
@@ -2204,44 +2276,38 @@ deckA.volume =
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-80">
+        <li id="section-85">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-80">&#182;</a>
+                <a class="pilcrow" href="#section-85">&#182;</a>
               </div>
               <p>Clear all automation</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clearAutomation</span>(<span class="hljs-params"></span>)</span>{
+
     <span class="hljs-keyword">var</span> t = <span class="hljs-built_in">window</span>.setTimeout(<span class="hljs-literal">null</span>,<span class="hljs-number">0</span>);
     <span class="hljs-keyword">while</span> (t--) { <span class="hljs-built_in">window</span>.clearTimeout(t) }
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Automations canceled"</span>)
+    <span class="hljs-built_in">console</span>.info(<span class="hljs-string">"Automations canceled"</span>)
 }</pre></div></div>
             
         </li>
         
         
-        <li id="section-81">
+        <li id="section-86">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-81">&#182;</a>
-=======
-        <li id="section-79">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-79">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-86">&#182;</a>
               </div>
               <p>drag drop</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-built_in">window</span>.allowDrop = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ev</span>) </span>{
+
     ev.preventDefault();
     <span class="hljs-keyword">if</span> (ev.target.getAttribute(<span class="hljs-string">"draggable"</span>) == <span class="hljs-string">"true"</span>)
         ev.dataTransfer.dropEffect = <span class="hljs-string">"none"</span>; <span class="hljs-comment">// dropping is not allowed</span>
@@ -2250,31 +2316,25 @@ deckA.volume =
 }
 
 <span class="hljs-built_in">window</span>.drag = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ev</span>) </span>{
+
     ev.dataTransfer.setData(<span class="hljs-string">"src"</span>, ev.target.id);
 }
 
 <span class="hljs-built_in">window</span>.drop = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ev</span>) </span>{
-    ev.preventDefault();
+
+    ev.preventDefault()
     <span class="hljs-keyword">let</span> blobsrc = ev.dataTransfer.getData(<span class="hljs-string">"src"</span>)
-    <span class="hljs-built_in">console</span>.log(blobsrc);
+    <span class="hljs-built_in">console</span>.info(blobsrc)
     ev.target.src = blobsrc</pre></div></div>
             
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-82">
+        <li id="section-87">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-82">&#182;</a>
-=======
-        <li id="section-80">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-80">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-87">&#182;</a>
               </div>
               <p>~ dragged.className += “ dropped”;</p>
 
@@ -2285,28 +2345,21 @@ deckA.volume =
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-83">
+        <li id="section-88">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-83">&#182;</a>
-=======
-        <li id="section-81">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-81">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-88">&#182;</a>
               </div>
               <p>keyboard events</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>onkeyup = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)</span>{
-    <span class="hljs-keyword">let</span> yop =  e.key;<span class="hljs-built_in">console</span>.log(yop)
+
+    <span class="hljs-keyword">let</span> yop =  e.key;<span class="hljs-built_in">console</span>.info(yop)
     e.preventDefault();
-    <span class="hljs-keyword">if</span>(e.keyCode == <span class="hljs-number">32</span>){ e.preventDefault(); autoDeckA(<span class="hljs-number">300</span>); <span class="hljs-built_in">console</span>.log(E); autoDeckB(<span class="hljs-number">150</span>) }
+    <span class="hljs-keyword">if</span>(e.keyCode == <span class="hljs-number">32</span>){ e.preventDefault(); autoDeckA(<span class="hljs-number">300</span>); <span class="hljs-built_in">console</span>.info(E); autoDeckB(<span class="hljs-number">150</span>) }
     <span class="hljs-keyword">if</span>(e.key == <span class="hljs-string">","</span>){ e.preventDefault(); trackRandom() }
     <span class="hljs-keyword">if</span>(e.key == <span class="hljs-string">";"</span>){ e.preventDefault(); trackRandomA() }
     <span class="hljs-keyword">if</span>(e.key == <span class="hljs-string">":"</span>){ e.preventDefault(); trackRandomB() }
@@ -2338,61 +2391,46 @@ deckA.volume =
     <span class="hljs-keyword">if</span>(e.key == <span class="hljs-string">"y"</span>){ e.preventDefault(); autoDeckB(<span class="hljs-number">444</span>) }
     <span class="hljs-keyword">if</span> (e.key === <span class="hljs-string">'Control'</span>) {<span class="hljs-keyword">return</span>}
     <span class="hljs-keyword">if</span> (e.ctrlKey) {
-        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowRight"</span>){e.preventDefault();
+        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowRight"</span>){ e.preventDefault();
             sliderTracks.stepUp(<span class="hljs-number">20</span>);
             fadeTracks()
         }
-        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowLeft"</span>){
-            e.preventDefault();
+        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowLeft"</span>){ e.preventDefault();
             sliderTracks.stepDown(<span class="hljs-number">20</span>);fadeTracks()
         }
-        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowUp"</span>){
-            e.preventDefault();
+        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowUp"</span>){ e.preventDefault();
             sliderTracksRatio.stepUp(<span class="hljs-number">2</span>);
         }
-        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowDown"</span>){
-            e.preventDefault();
+        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowDown"</span>){ e.preventDefault();
             sliderTracksRatio.stepDown(<span class="hljs-number">2</span>);
         }
-        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"Enter"</span>){
-            e.preventDefault();
+        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"Enter"</span>){ e.preventDefault();
             aud.click()
         }
-        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"!"</span>){
-            e.preventDefault();
+        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"!"</span>){ e.preventDefault();
             deckA.src = deckB.src
         }
     }
     <span class="hljs-keyword">if</span> (e.shiftKey) {
-        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowRight"</span>){
-            e.preventDefault();
+        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowRight"</span>){ e.preventDefault();
             sliderTracks.stepUp(<span class="hljs-number">100</span>);fadeTracks()
         }
-        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowLeft"</span>){
-            e.preventDefault();
+        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowLeft"</span>){ e.preventDefault();
             sliderTracks.stepDown(<span class="hljs-number">100</span>);fadeTracks()
         }
-        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowUp"</span>){
-            e.preventDefault();
+        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowUp"</span>){ e.preventDefault();
             sliderTracksRatio.stepUp(<span class="hljs-number">100</span>);fadeTracks()
         }
-        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowDown"</span>){
-            e.preventDefault();
+        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowDown"</span>){ e.preventDefault();
             sliderTracksRatio.stepDown(<span class="hljs-number">100</span>);fadeTracks()
         }
-        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"Enter"</span>){
-            e.preventDefault();
+        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"Enter"</span>){ e.preventDefault();
             audB.click()
         }
-        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"!"</span>){
-            e.preventDefault();
-            deckB.src = deckA.src
-        }
     }
-    <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"œ"</span>) {
-        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowUp"</span>){ e.preventDefault(); highGainKnob.value--;
-        }
-        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"ArrowDown"</span>){ e.preventDefault(); highGainKnob.stepDown(<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">if</span> (e.altKey) {
+        <span class="hljs-keyword">if</span> (e.key == <span class="hljs-string">"!"</span>){ e.preventDefault();
+            deckB.src = deckA.src
         }
     }
 }
@@ -2402,19 +2440,11 @@ deckA.volume =
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-84">
+        <li id="section-89">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-84">&#182;</a>
-=======
-        <li id="section-82">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-82">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-89">&#182;</a>
               </div>
               <p>~ onload = (function(){
 ~ pwnClr.value = ‘#’+Math.floor(Math.random()*16777215).toString(16);
@@ -2425,19 +2455,11 @@ deckA.volume =
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-85">
+        <li id="section-90">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-85">&#182;</a>
-=======
-        <li id="section-83">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-83">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-90">&#182;</a>
               </div>
               <p>Nice color from the user html input on load
 ~ pwnColor()</p>
@@ -2447,23 +2469,13 @@ deckA.volume =
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-86">
+        <li id="section-91">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-86">&#182;</a>
+                <a class="pilcrow" href="#section-91">&#182;</a>
               </div>
               <p>The page is ready, let’s prepare some more stuffs</p>
-=======
-        <li id="section-84">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-84">&#182;</a>
-              </div>
-              <p>The page is ready, let’s do some more stuffs</p>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
 
             </div>
             
@@ -2472,68 +2484,55 @@ deckA.volume =
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-87">
+        <li id="section-92">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-87">&#182;</a>
-=======
-        <li id="section-85">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-85">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-92">&#182;</a>
               </div>
               <p>Call back the page color set by user</p>
 
             </div>
             
-<<<<<<< HEAD
             <div class="content"><div class='highlight'><pre>    pwnClr.value = localStorage.getItem(<span class="hljs-string">'baseColor'</span>) || <span class="hljs-string">"#FFFFFF"</span></pre></div></div>
-=======
-            <div class="content"><div class='highlight'><pre>    pwnClr.value = sessionStorage.getItem(<span class="hljs-string">'baseColor'</span>)</pre></div></div>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
             
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-88">
+        <li id="section-93">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-88">&#182;</a>
-=======
-        <li id="section-86">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-86">&#182;</a>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
+                <a class="pilcrow" href="#section-93">&#182;</a>
               </div>
-              <p>Allow fullscreen by dualclick on the page body</p>
+              <p>~ document.body.setAttribute(“onwheel”,”lyrics(deckA)”)</p>
 
             </div>
             
-<<<<<<< HEAD
+        </li>
+        
+        
+        <li id="section-94">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-94">&#182;</a>
+              </div>
+              <p>Allow fullscreen by clicking the logo</p>
+
+            </div>
+            
             <div class="content"><div class='highlight'><pre>    <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"bonjour"</span>)[<span class="hljs-number">0</span>].setAttribute(<span class="hljs-string">"data-fullscreen"</span>,<span class="hljs-string">"off"</span>)
     <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"bonjour"</span>)[<span class="hljs-number">0</span>].setAttribute(<span class="hljs-string">"onclick"</span>,<span class="hljs-string">"if(this.dataset.fullscreen =='off'){this.dataset.fullscreen='on';fullScreen()}else{this.dataset.fullscreen='off';regularScreen()}"</span>)</pre></div></div>
-=======
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-built_in">document</span>.body.setAttribute(<span class="hljs-string">"data-fullscreen"</span>,<span class="hljs-string">"off"</span>)
-    <span class="hljs-built_in">document</span>.body.setAttribute(<span class="hljs-string">"ondblclick"</span>,<span class="hljs-string">"if(this.dataset.fullscreen =='off'){this.dataset.fullscreen='on';fullScreen()}else{this.dataset.fullscreen='off';regularScreen()}"</span>)</pre></div></div>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
             
         </li>
         
         
-<<<<<<< HEAD
-        <li id="section-89">
+        <li id="section-95">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-89">&#182;</a>
+                <a class="pilcrow" href="#section-95">&#182;</a>
               </div>
               <p>Insert new favicon</p>
 
@@ -2548,27 +2547,84 @@ deckA.volume =
         </li>
         
         
-        <li id="section-90">
+        <li id="section-96">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-90">&#182;</a>
+                <a class="pilcrow" href="#section-96">&#182;</a>
               </div>
               <p>Calculate and display colors based on user needs</p>
-=======
-        <li id="section-87">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-87">&#182;</a>
-              </div>
-              <p>Calculate and display user colors </p>
->>>>>>> 6af3098347a4bfc65e3e8b9a32e3ff1b4de4e9d5
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    pwnColor()
-})()</pre></div></div>
+})()
+
+
+<span class="hljs-keyword">if</span> (<span class="hljs-string">'serviceWorker'</span> <span class="hljs-keyword">in</span> navigator) {
+
+  navigator.serviceWorker.register(<span class="hljs-string">'sw.js'</span>, { <span class="hljs-attr">scope</span>: <span class="hljs-string">''</span> }).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">reg</span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-97">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-97">&#182;</a>
+              </div>
+              <p>registration worked</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Registration succeeded. Scope is '</span> + reg.scope);
+  }).catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-98">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-98">&#182;</a>
+              </div>
+              <p>registration failed</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Registration failed with '</span> + error);
+  });
+};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">info</span>(<span class="hljs-params">artist,track</span>) </span>{
+
+ <span class="hljs-keyword">let</span> notif = artist,
+     dec = <span class="hljs-string">"128520"</span>
+ 
+  <span class="hljs-keyword">let</span> options = {
+      <span class="hljs-attr">title</span>: <span class="hljs-string">'Thot:'</span>,
+      <span class="hljs-attr">body</span>: track,
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">'thot.png'</span>
+  }
+  <span class="hljs-keyword">if</span> (buttonNotif.value == <span class="hljs-string">"on"</span>) {
+      <span class="hljs-keyword">let</span> splash = <span class="hljs-keyword">new</span> Notification(notif,options)
+      setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ splash.close() }, <span class="hljs-number">1100</span>)
+}}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">askNotify</span>(<span class="hljs-params"></span>) </span>{
+
+    Notification.requestPermission(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">permission</span>) </span>{ })
+}
+askNotify()
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">protocolHandler</span>(<span class="hljs-params"></span>) </span>{
+
+    navigator.registerProtocolHandler(<span class="hljs-string">"web+thot"</span>,
+                              <span class="hljs-string">"https://ponyhacks.com/open/apps/player/#=%s"</span>,
+                              <span class="hljs-string">"THoTplayer"</span>);
+}protocolHandler()</pre></div></div>
             
         </li>
         

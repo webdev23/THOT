@@ -1,5 +1,5 @@
-//~ Block console.log
-//~ console.log = function() {}
+//~ Block console.info
+//~ console.info = function() {}
 
 /*** 
  * THOT | This HTML Orgasmic Turntable
@@ -54,7 +54,7 @@
  * Play the playlist numbered 13 on deckA:
  * deckA.src = list[13]
  * 
- * Fade automation from the deck B to A in (350)ms
+ * Fade automation from the deck B to A in 35 seconds 
  * autoDeckA(350)
  * 
  * Show the Equalizer:
@@ -75,10 +75,14 @@ let sp = document.createElement("SPAN")
 let a = document.createElement("audio")
 
 // They will need some buttons to evolve in the playlist
-let buttonFoo = document.createElement("button")
-let buttonBar = document.createElement("button")
-buttonFoo.className = "buttonFoo"
-buttonBar.className = "buttonBar"
+let deckAnext = document.createElement("button")
+let deckAlast = document.createElement("button")
+let deckBnext = document.createElement("button")
+let deckBlast = document.createElement("button")
+deckAnext.className = "deckplaylist deckAnext"
+deckAlast.className = "deckplaylist deckAlast"
+deckBnext.className = "deckplaylist deckBnext"
+deckBlast.className = "deckplaylist deckBlast"
 
 // Give user control power
 a.setAttribute("controls", "")
@@ -100,8 +104,8 @@ a.setAttribute("ondurationchange", "trackNameA()")
 a.setAttribute("ondrop", "drop(event)")
 a.setAttribute("ondragover", "allowDrop(event)")
 
-// Blink a led if a track is a playing, to be defined later
-a.setAttribute("onplaying", "ledAcheck()")
+// Blink a led if a track is a playing
+a.setAttribute("onplaying", "ledAcheck();notifTrack(deckA.src)")
 
 // Check blink state in case of seeking 
 a.setAttribute("onseeked", "ledAcheck()")
@@ -127,7 +131,7 @@ let deckB = document.createElement("audio")
     deckB.setAttribute("ondurationchange", "trackNameB()")
     deckB.setAttribute("ondrop", "drop(event)")
     deckB.setAttribute("ondragover", "allowDrop(event)")
-    deckB.setAttribute("onplaying", "ledBcheck()")
+    deckB.setAttribute("onplaying", "ledBcheck();notifTrack(deckB.src)")
     deckB.setAttribute("onseeked", "ledBcheck()")
     deckB.setAttribute("ontimeupdate", "ledBcheck()")
     deckB.setAttribute("onpause", "ledB.className = 'led_off'")
@@ -140,7 +144,7 @@ let target = document.getElementsByTagName("div")[0]
 
 let mixer = document.createElement("div")
 mixer.innerHTML = `
-<div class="mixer">
+<div class="mixer" draggable>
  <!-- Deck A -->
  <div class="left">
 <form>
@@ -163,7 +167,7 @@ mixer.innerHTML = `
 
  <!-- Deck B -->
  <div>
-	 
+     
  <form class="mixRight">
     <!-- <label>Low Gain</label> -->
     <input type="range" id="lowGainKnob_deckB" class="mixreversed" value="50"
@@ -191,7 +195,7 @@ mixer.innerHTML = `
 <!-- Slider -->
 <form class="slider" id="sliderForm">
  <input type="range" id="sliderTracks" name="slidertracks" 
-   oninput="fadeTracks()" onclick="clearAutomation()" value="50" step="1" min="1" max="99" />
+   oninput="fadeTracks()" oncontextmenu="clearAutomation();return false" title="Right click to reset all automation" value="0" step="1" min="1" max="99" />
  <input type="range" id="sliderTracksRatio" 
   value="5" step="5" min="5" max="400" />
 </form>
@@ -211,7 +215,9 @@ mixer.innerHTML = `
 <button type="button" class="ctrlBb" onclick="return resetAll();">&#7360;</button>
 <button type="button" class="buttonshoweq" value="on" 
 onclick="if(this.value=='off'){this.value='on'}else{this.value='off'};showEq(this.value);">
-&#119661;</button>
+&#128335;</button>
+<button type="button" id="buttonNotif" class="active" value="on" 
+onclick="if(this.value=='off'){this.value='on';this.className='active'}else{this.value='off';this.className=''}" title="Toggle notifications">&#9748;</button>
 
 <!-- Files inputs-->
 <ul id="listing" oninput="pwnColor()"></ul>
@@ -253,19 +259,26 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=966247
     <b>𝄞</b>
 </span>
 
-<span id="ledA"></span>
-<span id="ledB"></span>
+<span id="ledA" onclick="lyrics(deckA)"></span>
+<span id="ledB" onclick="lyrics(deckB)"></span>
+
+
+<div id="artist">yo</div>
+<span id="closelyrics" onclick="document.documentElement.style.cssText += ' ;transform:translateY(0px)';fixScroll()">X</span>
+
 `
 // Construct the DOM by injecting the playlist buttons 
-target.appendChild(buttonFoo)
-target.appendChild(buttonBar)
-target.appendChild(sp)
-target.appendChild(mixer)
+    target.appendChild(deckAnext)
+    target.appendChild(deckAlast)
+    target.appendChild(deckBnext)
+    target.appendChild(deckBlast)
+    target.appendChild(sp)
+    target.appendChild(mixer)
 
 // And insert both audio players as childrens
 // This way our parents buttons can gently ask stuffs to their player childrens
-sp.appendChild(a)
-sp.appendChild(deckB)
+    sp.appendChild(a)
+    sp.appendChild(deckB)
 
 // This childs sometimes brings mp3 crap at home 
 // ...We need to connect them to the web audio api...
@@ -273,6 +286,14 @@ let context = new AudioContext()
 // We connect the bad son player A first
 let mediaElement = a
 let sourceNode = context.createMediaElementSource(mediaElement)
+//~ var node = context.createScriptProcessor(1024, 1, 1);
+//~ node.onaudioprocess = function (e) {
+  //~ var output = e.outputBuffer.getChannelData(0);
+  //~ for (var i = 0; i < output.length; i++) {
+    //~ output[i] = Math.random();
+  //~ }
+//~ };
+//~ node.connect(context.destination);
 // We need gain control 
 let gainDb = -40.0
 // And band pass filter to some more humans bands 290hz, 360hz, 432hz...
@@ -330,29 +351,29 @@ let lInvert = context.createGain()
     lInvert.gain.value = -20.23
 
 // Connect sources and filters
-sourceNode.connect(lBand)
-sourceNode.connect(lBand02)
-sourceNode.connect(lBand03)
-sourceNode.connect(mBand)
-sourceNode.connect(hBand05)
-sourceNode.connect(hBand06)
-sourceNode.connect(hBand)
+    sourceNode.connect(lBand)
+    sourceNode.connect(lBand02)
+    sourceNode.connect(lBand03)
+    sourceNode.connect(mBand)
+    sourceNode.connect(hBand05)
+    sourceNode.connect(hBand06)
+    sourceNode.connect(hBand)
 
 // connect filters to their amplifier nodes
-hBand.connect(hInvert)
-hBand05.connect(lInvert02)
-hBand06.connect(lInvert03)
-lBand03.connect(hInvert06)
-lBand02.connect(hInvert05)
-lBand.connect(lInvert)
+    hBand.connect(hInvert)
+    hBand05.connect(lInvert02)
+    hBand06.connect(lInvert03)
+    lBand03.connect(hInvert06)
+    lBand02.connect(hInvert05)
+    lBand.connect(lInvert)
 
 // High pass
-hInvert.connect(mBand)
-hInvert06.connect(mBand)
-hInvert05.connect(mBand)
-lInvert03.connect(mBand)
-lInvert02.connect(mBand)
-lInvert.connect(mBand)
+    hInvert.connect(mBand)
+    hInvert06.connect(mBand)
+    hInvert05.connect(mBand)
+    lInvert03.connect(mBand)
+    lInvert02.connect(mBand)
+    lInvert.connect(mBand)
 
 // Create gain node for amplifiers
 let lGain = context.createGain(),
@@ -364,26 +385,26 @@ let lGain = context.createGain(),
     hGain = context.createGain()
 
 // Cnnect amplifiers nodes to gain
-lBand.connect(lGain)
-lBand02.connect(hGain06)
-lBand03.connect(hGain05)
-mBand.connect(mGain)
-hBand05.connect(lGain03)
-hBand06.connect(lGain02)
-hBand.connect(hGain)
+    lBand.connect(lGain)
+    lBand02.connect(hGain06)
+    lBand03.connect(hGain05)
+    mBand.connect(mGain)
+    hBand05.connect(lGain03)
+    hBand06.connect(lGain02)
+    hBand.connect(hGain)
 
 // Create a gain node to receive the main stream 
 let sum = context.createGain()
 // Connect each lowpasses nodes to the main gain
-lGain.connect(sum)
-lGain02.connect(sum)
-lGain03.connect(sum)
-mGain.connect(sum)
-hGain05.connect(sum)
-hGain06.connect(sum)
-hGain.connect(sum)
+    lGain.connect(sum)
+    lGain02.connect(sum)
+    lGain03.connect(sum)
+    mGain.connect(sum)
+    hGain05.connect(sum)
+    hGain06.connect(sum)
+    hGain.connect(sum)
 // Connect the audio player deck A to the speakers
-sum.connect(context.destination)
+    sum.connect(context.destination)
 
 /* Deck B EQualizer
  * 
@@ -445,29 +466,29 @@ let lBanddeckb = contextdeckb.createBiquadFilter()
     lBanddeckb.gain.value = gainDbdeckb
 
 let lInvertdeckb = contextdeckb.createGain()
-lInvertdeckb.gain.value = -60.23
-
-sourceNodedeckb.connect(lBanddeckb)
-sourceNodedeckb.connect(lBand02deckb)
-sourceNodedeckb.connect(lBand03deckb)
-sourceNodedeckb.connect(mBanddeckb)
-sourceNodedeckb.connect(hBand05deckb)
-sourceNodedeckb.connect(hBand06deckb)
-sourceNodedeckb.connect(hBanddeckb)
-
-hBanddeckb.connect(hInvertdeckb)
-hBand05deckb.connect(lInvert02deckb)
-hBand06deckb.connect(lInvert03deckb)
-lBand03deckb.connect(hInvert06deckb)
-lBand02deckb.connect(hInvert05deckb)
-lBanddeckb.connect(lInvertdeckb)
-
-hInvertdeckb.connect(mBanddeckb)
-hInvert06deckb.connect(mBanddeckb)
-hInvert05deckb.connect(mBanddeckb)
-lInvert03deckb.connect(mBanddeckb)
-lInvert02deckb.connect(mBanddeckb)
-lInvertdeckb.connect(mBanddeckb)
+    lInvertdeckb.gain.value = -60.23
+    
+    sourceNodedeckb.connect(lBanddeckb)
+    sourceNodedeckb.connect(lBand02deckb)
+    sourceNodedeckb.connect(lBand03deckb)
+    sourceNodedeckb.connect(mBanddeckb)
+    sourceNodedeckb.connect(hBand05deckb)
+    sourceNodedeckb.connect(hBand06deckb)
+    sourceNodedeckb.connect(hBanddeckb)
+    
+    hBanddeckb.connect(hInvertdeckb)
+    hBand05deckb.connect(lInvert02deckb)
+    hBand06deckb.connect(lInvert03deckb)
+    lBand03deckb.connect(hInvert06deckb)
+    lBand02deckb.connect(hInvert05deckb)
+    lBanddeckb.connect(lInvertdeckb)
+    
+    hInvertdeckb.connect(mBanddeckb)
+    hInvert06deckb.connect(mBanddeckb)
+    hInvert05deckb.connect(mBanddeckb)
+    lInvert03deckb.connect(mBanddeckb)
+    lInvert02deckb.connect(mBanddeckb)
+    lInvertdeckb.connect(mBanddeckb)
 
 let lGaindeckb = contextdeckb.createGain()
 let lGain02deckb = contextdeckb.createGain()
@@ -478,29 +499,29 @@ let hGain06deckb = contextdeckb.createGain()
 let hGaindeckb = contextdeckb.createGain()
 
 
-mGaindeckb.gain.value = -0.001
+    mGaindeckb.gain.value = -0.001
 
-lBanddeckb.connect(lGaindeckb)
-lBand02deckb.connect(hGain06deckb)
-lBand03deckb.connect(hGain05deckb)
-mBanddeckb.connect(mGaindeckb)
-hBand05deckb.connect(lGain03deckb)
-hBand06deckb.connect(lGain02deckb)
-hBanddeckb.connect(hGaindeckb)
+    lBanddeckb.connect(lGaindeckb)
+    lBand02deckb.connect(hGain06deckb)
+    lBand03deckb.connect(hGain05deckb)
+    mBanddeckb.connect(mGaindeckb)
+    hBand05deckb.connect(lGain03deckb)
+    hBand06deckb.connect(lGain02deckb)
+    hBanddeckb.connect(hGaindeckb)
+    
+    let sumdeckb = contextdeckb.createGain()
+    lGaindeckb.connect(sumdeckb)
+    lGain02deckb.connect(sumdeckb)
+    lGain03deckb.connect(sumdeckb)
+    mGaindeckb.connect(sumdeckb)
+    hGain05deckb.connect(sumdeckb)
+    hGain06deckb.connect(sumdeckb)
+    hGaindeckb.connect(sumdeckb)
 
-let sumdeckb = contextdeckb.createGain()
-lGaindeckb.connect(sumdeckb)
-lGain02deckb.connect(sumdeckb)
-lGain03deckb.connect(sumdeckb)
-mGaindeckb.connect(sumdeckb)
-hGain05deckb.connect(sumdeckb)
-hGain06deckb.connect(sumdeckb)
-hGaindeckb.connect(sumdeckb)
-
-sumdeckb.gain.value = 0.1
+    sumdeckb.gain.value = 0.1
 
 //~ sumdeckb.connect(contextdeckb.destination)
-sumdeckb.connect(context.destination)
+    sumdeckb.connect(context.destination)
 
 // Array of tracks for the base playlist
 let list = ["05seventheclipse.mp3",
@@ -516,58 +537,99 @@ let listLength = list.length
 let playlist = "0";
 
 // Text for the buttons
-buttonFoo.innerHTML = "↶";
-buttonBar.innerHTML = "↷";
+    deckAnext.innerHTML = "↶";
+    deckAlast.innerHTML = "↷";
+    deckBnext.innerHTML = "↶";
+    deckBlast.innerHTML = "↷";
 
 // Give needed attributes to the audio player
-deckB.src = list[0];
+    deckB.src = list[0];
 
 // Listen for a click event on the first FOO button
-buttonFoo.addEventListener("click", function() {
+deckAnext.onclick = function() {
   // if playlist number in range
   if (playlist >= 1) {
     // decrement  
     playlist--;
     // Change the player source and reload
-    document.getElementsByTagName("audio")[0].src = list[playlist];
-    document.getElementsByTagName("audio")[0].load();
+    deckA.src = list[playlist];
+    deckA.load();
     // Avoid collision
     return false;
   } // Else jump to last track
   else {
     playlist = list.length;
-    document.getElementsByTagName("audio")[0].src = list[list.length];
-    document.getElementsByTagName("audio")[0].load();
-    console.log("This is the last track: " + playlist);
+    deckA.src = list[list.length];
+    deckA.load();
+    console.info("This is the last track: " + playlist);
     // Important to avoid collision 
     return false;
   }
-})
+}
 
 // Similar actions for the forward BAR button
-buttonBar.addEventListener("click", function() {
+deckAlast.onclick = function() {
   if (playlist < list.length) {
     playlist++;
-    document.getElementsByTagName("audio")[0].src = list[playlist];
-    document.getElementsByTagName("audio")[0].load();
+    deckA.src = list[playlist];
+    deckA.load();
     // Avoid collision
     return false;
   } else {
     playlist = 0;
-    document.getElementsByTagName("audio")[0].src = list[playlist];
-    document.getElementsByTagName("audio")[0].load();
-    console.log("Now coming back to the first track");
+    deckA.src = list[playlist];
+    deckA.load();
+    console.info("Now coming back to the first track");
     return false;
   }
-})
+}
+
+deckBnext.onclick = function() {
+  // if playlist number in range
+  if (playlist >= 1) {
+    // decrement  
+    playlist--;
+    // Change the player source and reload
+    deckB.src = list[playlist];
+    deckB.load();
+    // Avoid collision
+    return false;
+  } // Else jump to last track
+  else {
+    playlist = list.length;
+    deckB.src = list[list.length];
+    deckB.load();
+    console.info("This is the last track: " + playlist);
+    // Important to avoid collision 
+    return false;
+  }
+}
+
+// Similar actions for the forward BAR button
+deckBlast.onclick = function() {
+  if (playlist < list.length) {
+    playlist++;
+    deckB.src = list[playlist];
+    deckB.load();
+    // Avoid collision
+    return false;
+  } else {
+    playlist = 0;
+    deckB.src = list[playlist];
+    deckB.load();
+    console.info("Now coming back to the first track");
+    return false;
+  }
+}
 
 // Reset Eq on load
 resetAll();
 // Watch for user file input on deck a playlist
 document.getElementById("aud").addEventListener("change", function(event) {
-  let output = document.getElementById("listing");
+
+  let output = document.getElementById("listing")
   let files = event.target.files;
-  let URL = window.URL || window.webkitURL;
+  let URL = window.URL || window.webkitURL
 for (let i = 0; i < files.length; i++) {
    if (files[i].type === "audio/mpeg" ||
        files[i].type === "audio/mp3"  ||
@@ -577,13 +639,14 @@ for (let i = 0; i < files.length; i++) {
     let item = document.createElement("li")
     let elemSrc = URL.createObjectURL(files[i])
     let elemPath = files[i].webkitRelativePath.replace(/["']/g, "")
+
     item.innerHTML += 
     "<a class='moonlist' onclick=\"deckB.src='"+
         elemSrc+"';autoDeckB(sliderTracksRatio.value);deckB.play();deckB.dataset.track='"+
-        elemPath+"';this.className='mark'\">♴</a> \
+        elemPath+"';this.className='mark'\">⮣</a> \
     <a class='moonlist' onclick=\"deckA.src='"+elemSrc+
         "';autoDeckA(sliderTracksRatio.value);this.className='mark';deckA.dataset.track='"+
-        elemPath+"';deckA.play()\">♳</a> \
+        elemPath+"';deckA.play()\">⮢</a> \
     <a class='drag' draggable='true' ondragstart='drag(event)' data-track='"+
         elemPath+"' onclick=\"document.getElementsByTagName('audio')[0].src='" + 
         elemSrc + "';this.className='mark';deckA.dataset.track='"+elemPath+
@@ -594,11 +657,25 @@ for (let i = 0; i < files.length; i++) {
     if (files[i].type === "image/jpeg"){
         item.style.display="none"
     }
-    
+
     item.dataset.track = elemPath;
     item.children[2].id = elemSrc;
 
     output.appendChild(item)
+    
+    let j = i
+    let f = files.length
+    console.log(j+" "+f)
+
+    let tag = setTimeout(function(){
+        id3(files[i], function(err, tags) {
+                    console.log(err, tags);
+                     console.log(i+" "+files.length)
+            item.dataset.tags = Object.entries(tags)
+                             window.clearInterval(tag)
+
+                }); }, 5000)
+
 }}
     (function(){
     setTimeout(function(){ poster() }, 10000)
@@ -607,6 +684,7 @@ for (let i = 0; i < files.length; i++) {
 
 // Watch for user file input on deck a playlist
 document.getElementById("audB").addEventListener("change", function(event) {
+
   let output = document.getElementById("listingB")
   let files = event.target.files
   let URL = window.URL || window.webkitURL
@@ -623,9 +701,10 @@ document.getElementById("audB").addEventListener("change", function(event) {
     let elemPath = files[i].webkitRelativePath.replace(/["']/g, "")
     item.innerHTML = "<a class='moonlist' onclick=\"deckA.src='"+elemSrc+
         "';autoDeckA(sliderTracksRatio.value);deckA.dataset.track='"+elemPath+
-        "';this.className='mark';deckA.play()\">♳</a> \
-        <a class='moonlist' onclick=\"deckB.src='"+elemSrc+"';autoDeckB(sliderTracksRatio.value);deckB.play();deckB.dataset.track='"+
-        elemPath+"';this.className='mark'\">♴</a> | \
+        "';this.className='mark';deckA.play()\">⮢</a> \
+        <a class='moonlist' onclick=\"deckB.src='"+elemSrc+
+        "';autoDeckB(sliderTracksRatio.value);deckB.play();deckB.dataset.track='"+
+        elemPath+"';this.className='mark'\">⮣</a> | \
         <a class='drag' draggable='true' ondragstart='drag(event)' data-track='"+
         elemPath+"' onclick=\"document.getElementsByTagName('audio')[1].src='" + 
         elemSrc + "';this.className='mark';\
@@ -639,16 +718,59 @@ document.getElementById("audB").addEventListener("change", function(event) {
     item.dataset.track = elemPath
     item.children[2].id = elemSrc
     
+    let j = i
+    let f = files.length
+    console.log(j+" "+f)
+
+    let tag = setTimeout(function(){
+        id3(files[i], function(err, tags) {
+                    console.log(err, tags);
+                     console.log(i+" "+files.length)
+            item.dataset.tags = Object.entries(tags)
+                             window.clearInterval(tag)
+
+                }); }, 1000)
+    
     output.appendChild(item)
 }}
     (function(){
     setTimeout(function(){ poster() }, 10000)
     })()
 
-}, false);
+}, false)
+
+function lyrics(deck) {
+
+let w = window.innerHeight,
+    me = deck.src
+    artist.innerHTML = "<small><i>Fetching lyrics...</i></small>"
+    artist.style.cssText += " ;transform:translateY(-"+w*0.5+"px)"
+    document.documentElement.style.cssText += " ;transform:translateY("+w*0.918+"px)"
+    document.documentElement.style.cssText += " height:"+window.innerHeight+"px"
+    ajax(me)
+}
+
+function ajax(me){
+
+try {    
+let aId3 = document.getElementById(me).parentNode.dataset.tags
+let aId3title = aId3.split(',', 2)[1]
+let aId3artist = aId3.split(',', 6)[5]
+let lyrics = new XMLHttpRequest()
+    lyrics.onreadystatechange = function() {
+      if (lyrics.readyState == XMLHttpRequest.DONE) {
+            console.log(lyrics.responseText)
+            artist.innerHTML = lyrics.responseText || "<small><i>No lyrics</i></small>" 
+        }}
+    lyrics.open('GET', 'https://ponyhacks.com/open/api/lyrics/?title=' + aId3title + '&artist=' + aId3artist , true)
+    lyrics.send(null)
+    }
+catch (nope) {artist.innerHTML = "<small><i>Id3 tags are missing.</i></small>"}
+}
 
 // Automix Random track
 function trackRandom() {
+
   playlist = list.length;
   deckA.src = list[Math.floor((Math.random() * playlist) + 1)]
   deckB.src = list[Math.floor((Math.random() * playlist) + 1)]
@@ -657,45 +779,37 @@ function trackRandom() {
  if (deckA.paused){
   deckA.pause()
  }
- if (deckB.paused) {
+ if (deckB.paused) { 
   deckB.pause()
  }
 }
 
 function trackRandomA() {
+
   playlist = list.length;
   deckA.src = list[Math.floor((Math.random() * playlist) + 1)];
   deckA.play()
 }
+
 function trackRandomB() {
+
   playlist = list.length;
   deckB.src = list[Math.floor((Math.random() * playlist) + 1)];
   deckB.play()
 }
 
-function fadeTracksParametrics() {
-if (document.getElementById("sliderTracks").value <= "50"){
-  deckA.volume = "1";
-  deckB.volume = (document.getElementById("sliderTracks").value / sliderTracks.value)
-}
-if (document.getElementById("sliderTracks").value >= "50"){
-  deckB.volume = "1";
-  deckA.volume = 1 - (document.getElementById("sliderTracks").value / sliderTracks.value)
-}
-console.log(document.getElementById("sliderTracksRatio").value)
-}
-
 function fadeTracks() {
+
 deckB.volume =
-  ((document.getElementById("sliderTracks").value *0.05 ) / sliderTracksRatio.value).toFixed(2) 
+  ((document.getElementById("sliderTracks").value *0.05 ) / sliderTracksRatio.value).toFixed(2)
 deckA.volume =
   Math.abs(1 - ((document.getElementById("sliderTracks").value *0.05) / sliderTracksRatio.value)).toFixed(2)
 }
 
 // Autoplay if specified in url hash: #autoplay
 if (window.location.hash.substr(1) === "autoplay"){
-     deckA.setAttribute("autoplay", "")
-      deckB.setAttribute("autoplay", "")
+    deckA.setAttribute("autoplay", "")
+    deckB.setAttribute("autoplay", "")
 }
 
 function autoDeckB(ms){
@@ -711,14 +825,14 @@ let ratioBA ="0.0083"
      let rate = (document.getElementById("sliderTracks").value * ratioBA) + gate
         document.getElementById("sliderTracks").value = (rate*0.88).toFixed(1)
         deckA.volume = 1- (gate * (ratioAB*0.88)) 
-        deckB.volume =  (gate * (ratioAB * 0.88))
-        console.log(((rate*0.8)*0.70).toFixed(1))
+        deckB.volume = (gate * (ratioAB * 0.88))
         if (deckB.volume >= "0.99"){
            mix_stop()
         }}
         function mix_stop() {
-        clearInterval(timer_automation);
-        console.log("Automation deckA to deckB completed!")
+        clearAutomation()
+        console.info("Automation to deckB complete")
+        console.table("DeckB: " + document.getElementById(deckA.src).dataset.track)
 }}
 
 function autoDeckA(ms){
@@ -727,12 +841,11 @@ let j = 100
 let timer_automation = setInterval(function(){ mix_BA() }, ms)
 let timer_holder = document.getElementById("sliderTracks").value
 let ratioAB ="0.0073"
-let ratioBA ="0.0083"
+let ratioBA ="0.01"
     function mix_BA() {
         let gate = j--
         let rate = (document.getElementById("sliderTracks").value * ratioAB) + gate
-        document.getElementById("sliderTracks").value = (rate*0.86).toFixed(1)
-        console.log((rate*0.86).toFixed(1))
+        document.getElementById("sliderTracks").value = (rate*0.88).toFixed(1)
         deckA.volume =  1-(gate * (ratioBA*0.88)).toFixed(1)
         deckB.volume =  (gate * (ratioBA * 0.98)).toFixed(1)
         if (deckA.volume >= "0.99"){
@@ -740,8 +853,9 @@ let ratioBA ="0.0083"
 }}
 
 function mixA_stop() {
-   clearInterval(timer_automation);
-   console.log("Automation deckB to deckA completed!")
+    clearAutomation()
+    console.info("Automation to deckA complete")
+    console.table("DeckB: " + document.getElementById(deckA.src).dataset.track)
 }}
 
 // Posters
@@ -750,6 +864,7 @@ let max = 0
 function poster(){
 
 document.querySelectorAll(".drag").forEach(function(element) {
+
     let poster = document.createElement("img");
         poster.setAttribute("data-tracksrc",element.id)
 // Max Posters Avoid lagging
@@ -759,13 +874,14 @@ document.querySelectorAll(".drag").forEach(function(element) {
             poster.src = element.id;
             poster.className= "picalbum";
             poster.title = element.dataset.track;
-            //~ console.log(element.dataset.track);
+            //~ console.info(element.dataset.track);
             posterA.appendChild(poster)
-            max++;console.log(max)
-            
+            max++;
+            //~ console.info(max)
+
             setTimeout(function(){ 
                 posterAnim((max*105)-window.innerWidth)
-                
+
                 // Block poster animation when inputs to avoid UI lags
                 document.querySelectorAll('input').forEach(function(elem) {
                   elem.setAttribute("onmouseover","posterPause('on')")
@@ -777,7 +893,9 @@ document.querySelectorAll(".drag").forEach(function(element) {
 })}
 
 function posterAnim(margin){
+
     let inj = document.createElement('style');
+    
     inj.innerHTML="\
             .poster {animation-play-state:paused}\
             .posteranim {animation-play-state:running}\
@@ -785,13 +903,15 @@ function posterAnim(margin){
               0%   { transform: translateX(0px) }\
               50% { transform: translateX(-"+margin+"px) }\
               100% { transform: translateX(0px) }"
+              
     document.body.appendChild(inj)
     document.getElementsByClassName("poster")[0].className += " posteranim"
 }
 
 function posterPause(toggle){
+
     if (toggle === "off"){
-         document.getElementsByClassName("poster")[0].style.animationPlayState="running"
+        document.getElementsByClassName("poster")[0].style.animationPlayState="running"
         //~ setTimeout(function(){ posterAnim()}, 3000);
         }
     if (toggle === "on"){
@@ -801,22 +921,26 @@ function posterPause(toggle){
 
 // Opposite color
 function decimalToHex(decimal) {
+
   let hex = decimal.toString(16)
   if (hex.length == 1) hex = '0' + hex
   return hex
 }
 
 function hexToDecimal(hex) {
+
     return parseInt(hex,16)
 }
  
 function returnOpposite(colour) {
+    
   return decimalToHex(255 - hexToDecimal(colour.substr(0,2))) 
     + decimalToHex(255 - hexToDecimal(colour.substr(2,2))) 
     + decimalToHex(255 -  hexToDecimal(colour.substr(4,2)));
 }
 
 function pwnColor() {
+
     document.body.parentElement.style.backgroundColor = document.getElementById('pwnClr').value
     document.body.style.color = 
     "#"+returnOpposite(document.getElementById('pwnClr').value.slice(1))
@@ -828,28 +952,32 @@ function pwnColor() {
 
 // Fix for firefox position:fixed bug when using css transformation
 if (!!window.chrome && !!window.chrome.webstore){
+
     document.body.setAttribute("onscroll","fixScroll()")
     document.body.setAttribute("onresize","fixScroll()")
     document.body.setAttribute("onresize","fixScroll()")
     document.getElementsByClassName("mixer")[0].style.margin = "380px 0px 0px 0px"
-    document.getElementsByClassName("bonjour")[0].style.margin = "0 0 0 -60px"
-    document.getElementsByClassName("left")[0].style.margin = "1% 0 0 -2%"
+    document.getElementsByClassName("bonjour")[0].style.margin = "0 0 0 -2.8%"
+    document.getElementsByClassName("left")[0].style.margin = "36px 0 0 -5%"
     document.getElementsByClassName("mixRight")[0].style.padding = ".9% 0 0 1%"
-    document.getElementById("rateControls").style.display = "block"
+    rateControls.style.display = "block"
 }
 
 function fixScroll(){
+
+    document.documentElement.style.cssText += " height:"+window.innerHeight+"px"
     posterblock.style.top= (window.innerHeight / 1.2) + window.scrollY+'px'
 }
 
 function showEq(showmebabe){
+
     let inj
     if (showmebabe == "off"){
         // Bitch
         inj = document.createElement('style');
         inj.innerHTML += 
             ".mixRight { opacity:0 }.left { opacity:0 } \
-            #listing { top:16.5%;max-height:64%;max-width:36%;margin:1% auto} \
+            #listing { top:16.5%;max-height:64%;max-width:36%;left:6%;margin:1% auto} \
             #listingB { top:16.5%;max-height:64%;max-width:36%;left:57%;margin: 0 0 0 -20px} \
             .files {position:block;width:100%;max-width:100%} \
             #audB{top:12%}\#aud{position:fixed\;top:12%\;left:0px} \
@@ -858,14 +986,14 @@ function showEq(showmebabe){
         document.body.appendChild(inj);
     }
     if (showmebabe == "on"){
-        // Bitch
+         // Bitch
         inj = document.createElement('style');
         inj.innerHTML += "\
             .mixRight {opacity:1  } \
             .left { opacity:1 } \
-            #listing {top: unset;max-height: 49%;max-width: 44% } \
-            #listing { top:330px;max-height:49%;max-width:44%;left:6%;margin:0 0 0 -20px} \
-            #listingB { top:330px;max-height:44%;max-width:44%;left:56%;margin:0 0 0 -20px} \
+            #listing {top: unset;max-height: 49%;left:9%;max-width: 44% } \
+            #listing { top:330px;max-height:49%;max-width:44%;margin:0 0 0 -20px} \
+            #listingB { top:330px;max-height:49%;max-width:44%;left:56%;margin:0 0 0 -20px} \
             .files { position:fixed;width:102%;max-width:100%} \
             #audB{ position:block;top:50%;left:unset} \
             #aud{ position:block;top:50%;left:unset} \
@@ -878,50 +1006,88 @@ function showEq(showmebabe){
 }
 
 function ledAcheck(){
+
     if (deckA.paused){
         ledA.className = 'led_off'
     }
     if (!deckA.paused){
-        if ((deckA.duration - deckA.currentTime) >= 30) {
+      if ((deckA.duration - deckA.currentTime) >= 30.3) {
             ledA.className = 'led_on'
-    } else { 
+        }
+    // Allow 600ms    
+      if ((deckA.duration - deckA.currentTime) < 20 && (deckA.duration - deckA.currentTime) >= 19.4) {
+       // Avoid breaking a track  
+        if (deckA.volume >= 0.9) {
+            autoDeckB(60)
+            console.warn("Automix 6 seconds to deck B")
+        }}
+      if ((deckA.duration - deckA.currentTime) <= 30.3) { 
         ledA.className = 'led_warning'
-        console.log("Warning: 30s till DeckA track end")
+        console.info("DeckA: " + (deckA.duration - deckA.currentTime).toFixed(0) +"s till end")
     }}
 }
 
 function ledBcheck(){
+
     if (deckB.paused){
         ledB.className = 'led_off'
     }
     if (!deckB.paused){
-        if ((deckB.duration - deckB.currentTime) >= 30) {
+     if ((deckB.duration - deckB.currentTime) >= 30.3) {
             ledB.className = 'led_on'
-    } else { 
+        }
+     if ((deckB.duration - deckB.currentTime) < 20 && (deckB.duration - deckB.currentTime) >= 19.4) {
+       // Avoid to break a track  
+       if (deckB.volume >= 0.9) {
+        autoDeckA(60)
+        console.warn("Automix 6 seconds to deck A")
+        }}
+     if ((deckB.duration - deckB.currentTime) <= 30.3) { 
         ledB.className = 'led_warning'
-        console.log("Warning: 30s till DeckB track end")
+        console.info("DeckB: " + (deckB.duration - deckB.currentTime).toFixed(0) +"s till end")        
     }}
 }
 
+function notifTrack(deck) {
+
+    try {
+     let t = document.getElementById(deck).parentNode.dataset.tags,
+         title = t.split(',', 2)[1],
+         artist = t.split(',', 6)[5]
+         info(artist,title)
+    }
+    catch (nope) {info("Mind Blown","No id3 tags found")}
+}
+
 function trackNameA() {
+
     try {
      trackA.innerHTML = document.getElementById(deckA.src).dataset.track
-     document.title = document.getElementById(deckA.src).dataset.track + "THOT"
+     document.title = document.getElementById(deckA.src).dataset.track
+     document.getElementById(deckA.src).style.cssText += " ;animation: ledblink 0.5s infinite"
+     document.getElementById(deckA.src).parentElement.children[0].style.cssText += " ;animation: ledblink 0.5s infinite"
+
+     console.warn("DeckB now playing: " + document.getElementById(deckA.src).dataset.track)
     }
-    catch (nope) {}
+    catch (nope) {info("Fucked","Error")}
     deckA.play()
 }
 
 function trackNameB() {
+
     try {
      trackB.innerHTML = document.getElementById(deckB.src).dataset.track
-     document.title = document.getElementById(deckB.src).dataset.track + "THOT"
+     document.title = document.getElementById(deckB.src).dataset.track
+     document.getElementById(deckB.src).style.cssText += " ;animation: ledblink 0.5s infinite"
+     document.getElementById(deckB.src).parentElement.children[1].style.cssText += " ;animation: ledblink 0.5s infinite"
+     console.warn("DeckB now playing: " + document.getElementById(deckB.src).dataset.track)     
     }
     catch (nope) {}
     deckB.play()
 }
 
 function fullScreen() {
+
     if (!document.fullscreenElement &&
           !document.mozFullScreenElement && !document.webkitFullscreenElement) {
       if (document.documentElement.requestFullscreen) {
@@ -935,6 +1101,7 @@ function fullScreen() {
 }
 
 function regularScreen() {  
+
     if (document.cancelFullScreen) {
           document.cancelFullScreen()
         } else if (document.mozCancelFullScreen) {
@@ -946,6 +1113,7 @@ function regularScreen() {
 
 // Deck B equalizer main function
 function changeGaindeckb(string, type) {
+
   let value = parseFloat(string) / 100.0;
   switch (type) {
     case 'lowGain':
@@ -974,6 +1142,7 @@ function changeGaindeckb(string, type) {
 
 // Equalizer deck A main function
 function changeGain(string, type) {
+
   let value = parseFloat(string) / 100.0;
   switch (type) {
     case 'lowGain':
@@ -1002,6 +1171,7 @@ function changeGain(string, type) {
 
 // reset Eq deck A
 function resetAll() {
+
   changeGain('50', 'lowGain')
   changeGain('50', 'lowGain02')
   changeGain('50', 'lowGain03')
@@ -1020,6 +1190,7 @@ function resetAll() {
 
 // Reset Eq deck B
 function resetAll() {
+
   changeGain('50', 'lowGain')
   changeGain('50', 'lowGain02')
   changeGain('50', 'lowGain03')
@@ -1038,13 +1209,15 @@ function resetAll() {
 
 // Clear all automation
 function clearAutomation(){
+
     var t = window.setTimeout(null,0);
     while (t--) { window.clearTimeout(t) }
-    console.log("Automations canceled")
+    console.info("Automations canceled")
 }
 
 // drag drop
 window.allowDrop = function(ev) {
+
     ev.preventDefault();
     if (ev.target.getAttribute("draggable") == "true")
         ev.dataTransfer.dropEffect = "none"; // dropping is not allowed
@@ -1053,22 +1226,25 @@ window.allowDrop = function(ev) {
 }
 
 window.drag = function(ev) {
+
     ev.dataTransfer.setData("src", ev.target.id);
 }
 
 window.drop = function(ev) {
-    ev.preventDefault();
+
+    ev.preventDefault()
     let blobsrc = ev.dataTransfer.getData("src")
-    console.log(blobsrc);
+    console.info(blobsrc)
     ev.target.src = blobsrc
     //~ dragged.className += " dropped";
 }
 
 // keyboard events
 onkeyup = function(e){
-    let yop =  e.key;console.log(yop)
+
+    let yop =  e.key;console.info(yop)
     e.preventDefault();
-    if(e.keyCode == 32){ e.preventDefault(); autoDeckA(300); console.log(E); autoDeckB(150) }
+    if(e.keyCode == 32){ e.preventDefault(); autoDeckA(300); console.info(E); autoDeckB(150) }
     if(e.key == ","){ e.preventDefault(); trackRandom() }
     if(e.key == ";"){ e.preventDefault(); trackRandomA() }
     if(e.key == ":"){ e.preventDefault(); trackRandomB() }
@@ -1100,61 +1276,46 @@ onkeyup = function(e){
     if(e.key == "y"){ e.preventDefault(); autoDeckB(444) }
     if (e.key === 'Control') {return}
     if (e.ctrlKey) {
-        if (e.key == "ArrowRight"){e.preventDefault();
+        if (e.key == "ArrowRight"){ e.preventDefault();
             sliderTracks.stepUp(20);
             fadeTracks()
         }
-        if (e.key == "ArrowLeft"){
-            e.preventDefault();
+        if (e.key == "ArrowLeft"){ e.preventDefault();
             sliderTracks.stepDown(20);fadeTracks()
         }
-        if (e.key == "ArrowUp"){
-            e.preventDefault();
+        if (e.key == "ArrowUp"){ e.preventDefault();
             sliderTracksRatio.stepUp(2);
         }
-        if (e.key == "ArrowDown"){
-            e.preventDefault();
+        if (e.key == "ArrowDown"){ e.preventDefault();
             sliderTracksRatio.stepDown(2);
         }
-        if (e.key == "Enter"){
-            e.preventDefault();
+        if (e.key == "Enter"){ e.preventDefault();
             aud.click()
         }
-        if (e.key == "!"){
-            e.preventDefault();
+        if (e.key == "!"){ e.preventDefault();
             deckA.src = deckB.src
         }
     }
     if (e.shiftKey) {
-        if (e.key == "ArrowRight"){
-            e.preventDefault();
+        if (e.key == "ArrowRight"){ e.preventDefault();
             sliderTracks.stepUp(100);fadeTracks()
         }
-        if (e.key == "ArrowLeft"){
-            e.preventDefault();
+        if (e.key == "ArrowLeft"){ e.preventDefault();
             sliderTracks.stepDown(100);fadeTracks()
         }
-        if (e.key == "ArrowUp"){
-            e.preventDefault();
+        if (e.key == "ArrowUp"){ e.preventDefault();
             sliderTracksRatio.stepUp(100);fadeTracks()
         }
-        if (e.key == "ArrowDown"){
-            e.preventDefault();
+        if (e.key == "ArrowDown"){ e.preventDefault();
             sliderTracksRatio.stepDown(100);fadeTracks()
         }
-        if (e.key == "Enter"){
-            e.preventDefault();
+        if (e.key == "Enter"){ e.preventDefault();
             audB.click()
         }
-        if (e.key == "!"){
-            e.preventDefault();
-            deckB.src = deckA.src
-        }
     }
-    if (e.key == "œ") {
-        if (e.key == "ArrowUp"){ e.preventDefault(); highGainKnob.value--;
-        }
-        if (e.key == "ArrowDown"){ e.preventDefault(); highGainKnob.stepDown(1);
+    if (e.altKey) {
+        if (e.key == "!"){ e.preventDefault();
+            deckB.src = deckA.src
         }
     }
 }
@@ -1169,23 +1330,62 @@ onkeyup = function(e){
 
 // The page is ready, let's prepare some more stuffs
 onload = (function(){
+
     // Call back the page color set by user
     pwnClr.value = localStorage.getItem('baseColor') || "#FFFFFF"
-    
-    // Allow fullscreen by dualclick on the page body
+    //~ document.body.setAttribute("onwheel","lyrics(deckA)")
+
+    // Allow fullscreen by clicking the logo
     document.getElementsByClassName("bonjour")[0].setAttribute("data-fullscreen","off")
     document.getElementsByClassName("bonjour")[0].setAttribute("onclick","if(this.dataset.fullscreen =='off'){this.dataset.fullscreen='on';fullScreen()}else{this.dataset.fullscreen='off';regularScreen()}")
-    
+
     // Insert new favicon
     var link = document.querySelector("link[rel*='icon']")  || document.createElement('link');
         link.type = 'image/x-icon';
         link.rel = 'shortcut icon';
         link.href = 'favicon.png';
     document.getElementsByTagName('head')[0].appendChild(link)
-    
+
     // Calculate and display colors based on user needs
     pwnColor()
 })()
 
 
+if ('serviceWorker' in navigator) {
 
+  navigator.serviceWorker.register('sw.js', { scope: '' }).then(function(reg) {
+    // registration worked
+    console.log('Registration succeeded. Scope is ' + reg.scope);
+  }).catch(function(error) {
+    // registration failed
+    console.log('Registration failed with ' + error);
+  });
+};
+
+function info(artist,track) {
+
+ let notif = artist,
+     dec = "128520"
+ 
+  let options = {
+      title: 'Thot:',
+      body: track,
+      icon: 'thot.png'
+  }
+  if (buttonNotif.value == "on") {
+      let splash = new Notification(notif,options)
+      setTimeout(function(){ splash.close() }, 1100)
+}}
+
+function askNotify() {
+
+    Notification.requestPermission(function (permission) { })
+}
+askNotify()
+
+function protocolHandler() {
+
+    navigator.registerProtocolHandler("web+thot",
+                              "https://ponyhacks.com/open/apps/player/#=%s",
+                              "THoTplayer");
+}protocolHandler() 
