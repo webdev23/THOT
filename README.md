@@ -1,11 +1,16 @@
 <img width="100%" src="capture.jpeg"></img>
 
-/*** 
- * THOT | That HTML Obvious Turntable
- * Dual deck audio player with crossfader and dual 7 bands Equalizer
+ * THOT | That HTML Orgasmic Turntable
+ * Dual deck audio player
+ * Crossfader with automations
+ * Dual 7 bands Equalizer
  * Find songs in many local folders to organize a random playlist
  * Full keyboard controls
- ****
+ * Instant song lyrics
+ * Display albums pictures
+ * Song notifications
+ * Automixer, autoplaylists
+ ***
  *  Nico KraZhtest | 2017 | ponyhacks.com
  ***
  * Keyboard events (Azerty):
@@ -49,4 +54,4 @@
  * showEq("on")
  * 
  * 
- * *
+ **
