@@ -1,6 +1,6 @@
 <img width="100%" src="capture.jpeg"></img>
 
- * THOT | That HTML Orgasmic Turntable
+ * THOT | That HTML Outrageous Turntable
  * Dual deck audio player
  * Crossfader with automations
  * Dual 7 bands Equalizer
