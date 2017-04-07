@@ -9,7 +9,11 @@
  * Instant song lyrics
  * Display albums pictures
  * Song notifications
+ * id3 processing
  * Automixer, autoplaylists
+ *
+ * Demo: https://webdev23.github.io/THOT/
+ * This program can fully work offline in a browser
  ***
  * Please check the docs for more details: https://webdev23.github.io/THOT/docs/
  ***
