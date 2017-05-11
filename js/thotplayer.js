@@ -35,7 +35,7 @@
  * Basic usage from js:
  * Check the current playlist tracks array
  * list
- * 
+ *  
  * Or for the third track:
  * list[2]
  * 
