@@ -550,7 +550,7 @@ let hGaindeckb = contextdeckb.createGain()
     sumdeckb.connect(context.destination)
 
 // Array of tracks for the base playlist
-let list = ["05seventheclipse.mp3",
+let list = ["//freeteknomusic.org/mp3/sirius%2023/11%20sirius%2023%20-%20track%2011-trt.mp3",
   "//freeteknomusic.org/mp3/dsp/dsp%20-%20orgamix%20-%20sideb.mp3",
   "//freeteknomusic.org/mp3/echo%20system/echosystem%20-%20bender%20-%20preset.mp3",
   "//freeteknomusic.org/mp3/radium/Dj%20Radium%20-%20Post%20Nuclear%20Mix%20A.mp3"
