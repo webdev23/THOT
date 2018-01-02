@@ -551,9 +551,9 @@ let hGaindeckb = contextdeckb.createGain()
 
 // Array of tracks for the base playlist
 let list = ["05seventheclipse.mp3",
-  "//ponyhacks.com/img/www/medias/fw/perfect-blind-passing-the-veil.mp3",
-  "//ponyhacks.com/img/www/medias/fw/man-of-no-ego-celestial-medicine.mp3",
-  "//ponyhacks.com/img/www/medias/fw/ursus-formation.mp3"
+  "//freeteknomusic.org/mp3/dsp/dsp%20-%20orgamix%20-%20sideb.mp3",
+  "//freeteknomusic.org/mp3/echo%20system/echosystem%20-%20bender%20-%20preset.mp3",
+  "//freeteknomusic.org/mp3/radium/Dj%20Radium%20-%20Post%20Nuclear%20Mix%20A.mp3"
 ] //,"http://www.ektoplazm.com/mp3/phillax-chaos-theory.mp3"]
 //^|^|^
 // This include the track number 0, for a total of 4 tracks_______^^|^
