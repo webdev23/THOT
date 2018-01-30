@@ -1675,13 +1675,13 @@ list.push(buffer)
 
 }}
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js', { scope: '' }).then(function(reg) {
-      console.log('Workers in hold!')
-    }).catch(function(error) {
-      console.log('Warning, service woker failure' + error)
-    })
-}
+// if ('serviceWorker' in navigator) {
+//  navigator.serviceWorker.register('sw.js', { scope: '' }).then(function(reg) {
+//      console.log('Workers in hold!')
+//   }).catch(function(error) {
+//      console.log('Warning, service woker failure' + error)
+//    })
+// }
 
 // XY controller
 function holdEq(holdId) {
