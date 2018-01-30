@@ -72,7 +72,7 @@
 var targtCss = document.getElementsByTagName('*')[1],
 injCss = document.createElement('link')
 injCss.rel = "stylesheet"
-injCss.href = 'https://ponyhacks.com/open/apps/player/css/thot.css'
+injCss.href = 'https://webdev23.github.io/THOT/css/style.css'
 targtCss.appendChild(injCss)
 
 // We need to create a container to hold
@@ -761,7 +761,7 @@ document.getElementById("audB").addEventListener("change", function(event) {
  */
 var targtId3 = document.getElementsByTagName('*')[1],
 injId3 = document.createElement('script')
-injId3.src= 'https://ponyhacks.com/open/apps/player/js/id3.js'
+injId3.src= 'https://webdev23.github.io/THOT/js/id3.js'
 targtId3.appendChild(injId3)
 
 
@@ -1570,7 +1570,7 @@ onload = (function(){
     // Dependency txtwiki.js
   let tar = document.getElementsByTagName('*')[1],
     inj = document.createElement('script')
-    inj.src = 'https://ponyhacks.com/open/apps/player/js/txtwiki.js'
+    inj.src = 'https://webdev23.github.io/THOT/js/txtwiki.js'
     tar.appendChild(inj)
 
     // Calculate and display colors based on user needs
