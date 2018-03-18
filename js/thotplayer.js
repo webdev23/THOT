@@ -855,7 +855,7 @@ function ajax(me){
             artist.innerHTML = "<li>"+lyrics.responseText +"</li>" ||
              "<span class='fetchalert'><h1> 😯 </h1></span>" 
         }}
-        lyrics.open('GET', 'https://ponyhacks.com/open/api/lyrics/?title=' +
+        lyrics.open('GET', 'https://ponyhacks.com/api/lyrics/?title=' +
            aId3title + '&artist=' + aId3artist , true)
         lyrics.send(null)
         //~ artistInfos.innerHTML = ""
@@ -1275,7 +1275,7 @@ function ajaxTrack(track){
                      "<span class='fetchalert'><h1> 😯 </h1></span>" 
                      artistrack.value = newtrack
                 }}
-            lyrics.open('GET', 'https://ponyhacks.com/open/api/lyrics/?track=' +
+            lyrics.open('GET', 'https://ponyhacks.com/api/lyrics/?track=' +
                newtrack , true)
             lyrics.send(null)
             artist.innerHTML = newtrack
@@ -1357,7 +1357,7 @@ function ajaxArchives(art){
                         artistArchives.scrollTop = 0
                     }}
                 }}
-            archives.open('GET', 'https://ponyhacks.com/open/api/archives/?q=' + search, true)
+            archives.open('GET', 'https://ponyhacks.com/api/archives/?q=' + search, true)
             archives.send(null)
         } else {artistArchives.innerHTML = "😖 No archives"}
     }
